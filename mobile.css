@@ -112,3 +112,29 @@ br.dule-br-m{display:none}
   .dule-page .dule-hero-cta > a{flex:1 1 0;min-width:0;padding-left:14px!important;padding-right:14px!important;font-size:12.5px!important;white-space:nowrap;justify-content:center;text-align:center}
   .dule-lot{transform:scale(.62);transform-origin:top left;margin-right:-167px!important;margin-bottom:-212px}
 }
+
+/* cenovnik: tabela uvek 3 kolone, i na mobilnom (mora biti posle svih generickih collapse pravila) */
+@media (max-width:1180px){
+  .dule-page .dule-price-row.dule-price-row{grid-template-columns:1.4fr 1fr 1fr!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-r{text-align:left!important}
+  .dule-page .dule-price-row.dule-price-row > *,
+  .dule-page .dule-price-row.dule-price-row > * *{text-align:left!important;justify-items:start!important;text-wrap:wrap!important;text-align-last:left!important}
+  .dule-page .dule-price-row.dule-price-row > *{justify-content:flex-start!important;align-items:center!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-code{text-align:center!important;text-align-last:center!important}
+  .dule-page .dule-price-row.dule-price-row .sc-interp{text-align:left!important;text-align-last:left!important}
+  .dule-page .dule-price-disclaimer{text-align:left!important;margin-left:0!important;margin-right:0!important}
+}
+@media (max-width:600px){
+  .dule-page .dule-price-row.dule-price-row > *{padding-left:10px!important;padding-right:10px!important;font-size:11px!important}
+  .dule-page .dule-price-row.dule-price-row .sc-interp{text-align:left!important;text-align-last:left!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-code{min-width:32px!important;height:30px!important;font-size:12px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-name{font-size:13px!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-note{font-size:10.5px!important}
+}
+@media (max-width:480px){
+  .dule-page .dule-price-row.dule-price-row > *{padding-left:7px!important;padding-right:7px!important;padding-top:14px!important;padding-bottom:14px!important;font-size:10px!important}
+  .dule-page .dule-price-row.dule-price-row .sc-interp{text-align:left!important;text-align-last:left!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-code{min-width:28px!important;height:26px!important;font-size:11px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;line-height:1!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-name{font-size:11.5px!important}
+  .dule-page .dule-price-row.dule-price-row .dule-price-note{font-size:9.5px!important}
+}

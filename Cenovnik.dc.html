@@ -93,26 +93,26 @@
       <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:38px;letter-spacing:-.01em">Obuka i polaganje</h2>
     </div>
     <div style="background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden">
-      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--dark);color:#fff;font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:13.5px">
+      <div class="dule-price-row" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--dark);color:#fff;font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:13.5px">
         <div style="padding:18px 26px">Kategorija</div>
-        <div style="padding:18px 26px;text-align:right">Obuka</div>
-        <div style="padding:18px 26px;text-align:right">Cena</div>
+        <div class="dule-price-r" style="padding:18px 26px;text-align:left">Obuka</div>
+        <div class="dule-price-r" style="padding:18px 26px;text-align:left">Cena</div>
       </div>
       <sc-for list="{{ prices }}" as="p" hint-placeholder-count="6">
-        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid var(--line);align-items:center" style-hover="{{ rowHover }}">
+        <div class="dule-price-row" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid var(--line);align-items:center" style-hover="{{ rowHover }}">
           <div style="padding:20px 26px;display:flex;align-items:center;gap:14px">
-            <span style="font-family:Oswald;font-weight:700;color:#fff;background:var(--accent);border-radius:8px;min-width:44px;height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:15px">{{ p.code }}</span>
+            <span class="dule-price-code" style="font-family:Oswald;font-weight:700;color:#fff;background:var(--accent);border-radius:8px;min-width:44px;height:38px;display:inline-flex;align-items:center;justify-content:center;font-size:15px">{{ p.code }}</span>
             <div>
-              <div style="font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:16px">{{ p.name }}</div>
-              <div style="font-size:13px;color:var(--muted)">{{ p.note }}</div>
+              <div class="dule-price-name" style="font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:16px">{{ p.name }}</div>
+              <div class="dule-price-note" style="font-size:13px;color:var(--muted)">{{ p.note }}</div>
             </div>
           </div>
-          <div style="padding:20px 26px;text-align:right;font-size:14.5px;color:var(--muted)">{{ p.hours }}</div>
-          <div style="padding:20px 26px;text-align:right;font-family:Oswald;font-weight:600;font-size:16px;line-height:1.3;color:var(--ink)">{{ p.price }}</div>
+          <div class="dule-price-r" style="padding:20px 26px;text-align:left;font-size:14.5px;color:var(--muted)">{{ p.hours }}</div>
+          <div class="dule-price-r" style="padding:20px 26px;text-align:left;font-family:Oswald;font-weight:600;font-size:16px;line-height:1.3;color:var(--ink)">{{ p.price }}</div>
         </div>
       </sc-for>
     </div>
-    <p style="text-align:center;font-size:13.5px;color:var(--muted);margin-top:18px;max-width:640px;margin-left:auto;margin-right:auto">Cene su informativne. Kontaktirajte nas za zvaničnu ponudu, aktuelne akcije i plaćanje na rate.</p>
+    <p class="dule-price-disclaimer" style="text-align:center;font-size:13.5px;color:var(--muted);margin-top:18px;max-width:640px;margin-left:auto;margin-right:auto">Cene su informativne. Kontaktirajte nas za zvaničnu ponudu, aktuelne akcije i plaćanje na rate.</p>
   </section>
 
   <sc-if value="{{ imgOpen }}" hint-placeholder-val="">

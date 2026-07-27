@@ -37,6 +37,7 @@
   .dule-page header{position:sticky!important;top:0!important;z-index:60}
   /* slike, platna i animacije ne hvataju prevlačenje */
   .dule-page img,.dule-page canvas,.dule-page svg,.dule-page video,.dule-page lottie-player,.dule-page dotlottie-player,.dule-lot,.dule-lot *{-webkit-user-drag:none;user-select:none;pointer-events:none}
+  .dule-page img.dule-price-img{pointer-events:auto;cursor:pointer}
   /* interaktivni elementi zadržavaju dodir */
   .dule-page a,.dule-page button,.dule-page label,.dule-page input,.dule-page select,.dule-page textarea,.dule-page iframe,.dule-page a *,.dule-page button *{pointer-events:auto}
   .dule-page a,.dule-page button,.dule-page label{-webkit-tap-highlight-color:transparent}

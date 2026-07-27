@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./mobile.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f6f5f2}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:var(--accent,#e11221)}
+  ::selection{background:#e11221;color:#fff}
+  .dule-btn{transition:transform .35s cubic-bezier(.22,.68,.35,1),box-shadow .35s cubic-bezier(.22,.68,.35,1),background .25s,color .25s,border-color .25s}
+  .dule-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 38px -18px rgba(0,0,0,.35),0 0 30px -8px rgba(225,18,33,.45)}
+  @media (prefers-reduced-motion:reduce){.dule-btn:hover{transform:none}}
+  .dule-reveal{opacity:0;transform:translateY(30px);transition:opacity .75s cubic-bezier(.22,.68,.35,1),transform .75s cubic-bezier(.22,.68,.35,1)}
+  .dule-reveal.dule-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.dule-reveal{opacity:1;transform:none;transition:none}}
+  .dule-link{position:relative;display:inline-block}
+  .dule-link::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--accent,#e11221);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,.68,.35,1)}
+  .dule-link:hover::after{transform:scaleX(1)}
+  @keyframes dule-rise{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise2{0%,16%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise3{0%,28%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise4{0%,40%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  html[data-preloading] *{animation-play-state:paused!important}
+</style>
+<script src="./preloader.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" class="dule-page" style="--accent:#e11221;--accent-dark:#a50d18;--ink:#161719;--muted:#6b6d72;--line:#e6e4e0;--bg:#ffffff;--soft:#f2f0ec;--dark:#141518;font-family:Barlow,system-ui,sans-serif;color:#161719;background:#f6f5f2">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 24px 14px 12px;display:flex;align-items:center;gap:28px">
+      <a href="Auto%20%C5%A1kola%20Dule.dc.html" style="flex-shrink:0"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:54px;display:block"></a>
+      <nav class="dule-nav-desktop" style="margin-left:auto;display:flex;align-items:center;gap:4px;font-family:Oswald;font-weight:500;font-size:15px;letter-spacing:.04em;text-transform:uppercase">
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html" class="dule-link" style="padding:10px 13px">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html" class="dule-link" style="padding:10px 13px">Naš tim</a>
+        <a href="Kategorije.dc.html" class="dule-link" style="padding:10px 13px">Kategorije</a>
+        <a href="Cenovnik.dc.html" class="dule-link" style="padding:10px 13px">Cenovnik</a>
+        <a href="Vozila.dc.html" class="dule-link" style="padding:10px 13px;color:var(--accent)">Vozila</a>
+        <a href="O%20nama.dc.html" class="dule-link" style="padding:10px 13px">O nama</a>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html#kontakt" class="dule-link" style="padding:10px 13px">Kontakt</a>
+      </nav>
+      <a href="Kategorije.dc.html#upis-forma" class="dule-btn dule-top-cta" style="flex-shrink:0;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;padding:12px 20px;border-radius:9px" style-hover="{{ ctaHover }}">Online upis</a>
+      <input id="dule-mnav" type="checkbox" class="dule-mnav-cb" aria-label="Meni">
+      <label for="dule-mnav" class="dule-burger" aria-label="Otvori meni"><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span></label>
+      <nav class="dule-drawer">
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html">Naš tim</a>
+        <a href="Kategorije.dc.html">Kategorije</a>
+        <a href="Cenovnik.dc.html">Cenovnik</a>
+        <a href="Vozila.dc.html">Vozila</a>
+        <a href="O%20nama.dc.html">O nama</a>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html#kontakt">Kontakt</a>
+        <a class="dule-drawer-cta" href="Kategorije.dc.html#upis-forma">Online upis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section style="position:relative;background:var(--dark);color:#fff;overflow:hidden;height:clamp(520px,42vw,760px);box-sizing:border-box;display:flex;flex-direction:column">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,21,24,.94),rgba(20,21,24,1))"></div>
+      <div style="position:absolute;top:-340px;left:26%;transform:translateX(-50%);width:720px;height:720px;border-radius:50%;background:rgba(225,18,33,.3);filter:blur(150px)"></div>
+      <div style="position:absolute;bottom:-300px;right:-160px;width:640px;height:640px;border-radius:50%;background:rgba(249,115,22,.16);filter:blur(160px)"></div>
+      <div style="position:absolute;inset:0;opacity:.07;background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:72px 72px"></div>
+    </div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center">
+      <div style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:999px;font-family:Oswald;letter-spacing:.2em;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:20px;animation:dule-rise 1.05s cubic-bezier(.22,.68,.35,1) forwards"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>vozni park</div>
+      <h1 style="font-family:Oswald;font-weight:700;font-size:62px;line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;animation:dule-rise2 1.15s cubic-bezier(.22,.68,.35,1) forwards">Naša vozila</h1>
+      <p style="font-size:18px;line-height:1.6;color:#d7d6d3;max-width:1080px;text-wrap:balance;margin-top:32px;animation:dule-rise3 1.25s cubic-bezier(.22,.68,.35,1) forwards">Savremen i dobro opremljen vozni park za sve kategorije - motocikli, putnička, teretna i priključna vozila. Kod nas biraš vozilo kojim ćeš voziti i polagati ispit.</p>
+    </div>
+    <div style="position:relative;background:var(--accent);color:#fff;font-family:Oswald;letter-spacing:.05em;text-transform:uppercase;font-size:14px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap;padding:14px 24px">
+      <span>6 putničkih vozila</span><span>4 motocikla</span><span>1 teretno</span><span>2 priključna</span>
+    </div>
+  </section>
+
+  <!-- FLEET -->
+  <section style="max-width:1240px;margin:0 auto;padding:80px 24px 30px">
+    <div style="text-align:center;margin-bottom:52px">
+      <div style="font-family:Oswald;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>izaberi svoje vozilo</div>
+      <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:40px;letter-spacing:-.01em">Vozni park po kategorijama</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:30px">
+      <sc-for list="{{ fleet }}" as="f" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column" style-hover="{{ cardHover }}">
+          <div style="position:relative;background:var(--dark)">
+            <sc-if value="{{ f.banner }}" hint-placeholder-val="x">
+              <img src="{{ f.img }}" alt="{{ f.title }}" style="display:block;width:100%;height:auto">
+            </sc-if>
+            <sc-if value="{{ f.photo }}" hint-placeholder-val="x">
+              <div style="position:relative;height:280px"><img src="{{ f.img }}" alt="{{ f.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+            </sc-if>
+            <div style="position:absolute;top:20px;left:20px;background:var(--accent);color:#fff;font-family:Oswald;letter-spacing:.06em;text-transform:uppercase;font-size:13px;padding:7px 14px;border-radius:8px">{{ f.tag }}</div>
+            <div style="position:absolute;bottom:20px;left:20px;background:rgba(255,255,255,.94);color:var(--ink);font-family:Oswald;letter-spacing:.04em;text-transform:uppercase;font-size:13px;padding:7px 14px;border-radius:8px">{{ f.count }}</div>
+          </div>
+          <div style="padding:40px 46px 44px">
+            <div style="font-family:Oswald;font-weight:700;font-size:32px;text-transform:uppercase;letter-spacing:.01em">{{ f.title }}</div>
+            <p style="font-size:15.5px;line-height:1.66;color:var(--muted);margin-top:14px;max-width:none"><span style="display:block">{{ f.desc1 }}</span><span style="display:block">{{ f.desc2 }}</span></p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px">
+              <div>
+                <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)">Vozila za obuku</div>
+                <div style="display:flex;flex-direction:column;gap:15px">
+                  <sc-for list="{{ f.vehicles }}" as="v" hint-placeholder-count="3">
+                    <div style="display:flex;gap:12px;align-items:flex-start">
+                      <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px"></span>
+                      <div>
+                        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.03em;font-size:16px;line-height:1.15">{{ v.name }}</div>
+                        <div style="font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.4">{{ v.spec }}</div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)">Uslovi za polaganje</div>
+                <div style="display:flex;flex-direction:column;gap:13px">
+                  <sc-for list="{{ f.uslovi }}" as="u" hint-placeholder-count="3">
+                    <div style="display:flex;gap:12px;align-items:flex-start">
+                      <span style="flex-shrink:0;min-width:44px;text-align:center;font-family:Oswald;font-size:12px;letter-spacing:.04em;text-transform:uppercase;background:var(--accent);color:#fff;border-radius:6px;padding:5px 8px">{{ u.k }}</span>
+                      <div style="font-size:14px;line-height:1.5;color:var(--ink)">{{ u.v }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <sc-if value="{{ f.gallery }}" hint-placeholder-val="">
+              <div style="display:flex;gap:12px;margin-top:30px;flex-wrap:wrap">
+                <sc-for list="{{ f.gallery }}" as="g" hint-placeholder-count="4">
+                  <div style="width:158px;height:106px;border-radius:12px;overflow:hidden;border:1px solid var(--line)"><img src="{{ g }}" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SIMULATOR NOTE -->
+  <section style="max-width:1240px;margin:0 auto;padding:20px 24px 40px">
+    <div style="background:var(--dark);color:#fff;border-radius:20px;padding:44px 48px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <div style="max-width:640px">
+        <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>jedini u okrugu</div>
+        <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:30px;line-height:1.1">Simulator vožnje</h2>
+        <p style="font-size:15.5px;line-height:1.66;color:#d3d2cf;margin-top:14px">Pored voznog parka, jedina smo auto škola u Rasinskom okrugu koja poseduje simulator vožnje koji je savršen za sticanje prvog osećaja za vozilo pre izlaska na saobraćajnicu.</p>
+      </div>
+      <a href="Kategorije.dc.html#upis-forma" class="dule-btn" style="flex-shrink:0;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:16px 30px;border-radius:10px" style-hover="{{ ctaHover }}">Upiši se online</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1240px;margin:0 auto;padding:20px 24px 80px">
+    <div style="position:relative;border-radius:20px;overflow:hidden;color:#fff">
+      <img src="https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9487-01-1024x683.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,21,24,.94),rgba(20,21,24,.55))"></div>
+      <div style="position:relative;padding:58px 52px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+        <div>
+          <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.08">Izaberi vozilo i kreni</h2>
+          <p style="font-size:16px;color:#d7d6d3;margin-top:12px;max-width:520px">Biraš vozilo, instruktora i termin koji tebi odgovara. <br>Upiši se online za nekoliko minuta.</p>
+        </div>
+        <a href="Cenovnik.dc.html" class="dule-btn" style="flex-shrink:0;background:#fff;color:var(--ink);font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:16px 30px;border-radius:10px" style-hover="{{ ghostHover }}">Pogledaj cenovnik</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERI -->
+  <section style="max-width:1240px;margin:0 auto;padding:0 24px 60px;text-align:center">
+    <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:10px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>prijatelji auto škole</div>
+    <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:30px;margin-bottom:36px">NAŠI PARTNERI</h2>
+    <div style="display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap">
+      <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;width:150px;height:150px;display:flex;align-items:center;justify-content:center;padding:22px" style-hover="{{ cardHover }}"><img src="{{ p }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain"></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:var(--dark);color:#cfcecb">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px">
+      <div>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html" style="display:inline-block"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:60px;background:#fff;padding:10px 14px;border-radius:10px;display:block"></a>
+        <p style="font-size:14.5px;line-height:1.6;margin-top:20px;max-width:300px">Vozi sigurno, uči sa najboljima. Obuka za sve kategorije uz izbor instruktora, vozila i termina.</p>
+        <div style="display:flex;gap:10px;margin-top:20px">
+          <a href="https://www.facebook.com/dule.autoskola/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a>
+          <a href="https://www.instagram.com/autoskoladule/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://www.youtube.com/channel/UC92BBUXjT8KW2FbSgrHSTdQ" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.42A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77c1.53.43 8.83.43 8.83.43s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Kruševac</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobodana Jovanovića 6<br>060 6 037 037<br>pon–pet: 09–17h<br>subota: 09–14h</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Varvarin</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobode 94<br>060 6 037 037<br>pon–pet: 08–15h<br>subota: ne radimo</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Prijatelji sajta</div>
+        <div style="font-size:14.5px;line-height:2;display:flex;flex-direction:column">
+          <a href="http://www.mcg.rs/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Moto centar Gajić</a>
+          <a href="https://www.instagram.com/nezavisno_udruzenje_bajkera/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Udruženje bajkera</a>
+          <a href="https://www.facebook.com/Motocross-club-Gajic-1584827075112432/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Motocross club Gajić</a>
+          <a href="https://www.facebook.com/liontaxi.ks/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Lion Taxi</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1)"><div style="max-width:1240px;margin:0 auto;padding:22px 24px;font-size:13px;color:#8b8a87;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><span>Auto škola Dule Kruševac 2026 · Sva prava zadržana</span><span>2 lokacije · 8 kategorija · 12 vozila</span></div></div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e11221&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e11221&quot;,&quot;#c8102e&quot;,&quot;#d1232a&quot;,&quot;#1a1a1a&quot;]}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  splitDesc(list){
+    return list.map(f => {
+      const d = f.desc || '';
+      const i = d.indexOf('. ');
+      return i > 0 ? { ...f, desc1: d.slice(0, i + 1), desc2: d.slice(i + 2) } : { ...f, desc1: d, desc2: '' };
+    });
+  }
+  componentDidMount(){
+    const a = this.props.accentColor;
+    if (a && this.rootRef.current) this.rootRef.current.style.setProperty('--accent', a);
+    this.initReveal();
+  }
+  initReveal(){
+    const root = this.rootRef.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll(':scope > section, :scope > footer')).slice(1);
+    if (!targets.length) return;
+    targets.forEach(el => el.classList.add('dule-reveal'));
+    const check = () => {
+      const h = window.innerHeight || 800;
+      let left = 0;
+      targets.forEach(el => {
+        if (el.classList.contains('dule-in')) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.92) el.classList.add('dule-in'); else left++;
+      });
+      if (!left && this.stopReveal) this.stopReveal();
+    };
+    this.onRevealScroll = () => { check(); };
+    this.stopReveal = () => {
+      window.removeEventListener('scroll', this.onRevealScroll);
+      window.removeEventListener('resize', this.onRevealScroll);
+      if (this.revealIO) this.revealIO.disconnect();
+    };
+    if ('IntersectionObserver' in window){
+      this.revealIO = new IntersectionObserver((entries, io) => {
+        entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('dule-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach(el => this.revealIO.observe(el));
+    }
+    window.addEventListener('scroll', this.onRevealScroll, { passive: true });
+    window.addEventListener('resize', this.onRevealScroll);
+    check();
+  }
+  componentWillUnmount(){ if (this.stopReveal) this.stopReveal(); }
+  componentDidUpdate(prev){
+    if (prev.accentColor !== this.props.accentColor && this.rootRef.current)
+      this.rootRef.current.style.setProperty('--accent', this.props.accentColor || '#e11221');
+  }
+  renderVals(){
+    const acc = 'var(--accent,#e11221)';
+    return {
+      rootRef: this.rootRef,
+      ctaHover: { background:'var(--accent-dark,#a50d18)', transform:'translateY(-1px)' },
+      ghostHover: { transform:'translateY(-1px)', boxShadow:'0 18px 34px -18px rgba(0,0,0,.45)' },
+      cardHover: { transform:'translateY(-4px)', boxShadow:'0 24px 44px -22px rgba(0,0,0,.28)' },
+      socHover: { background: acc, borderColor: acc, color:'#fff' },
+      linkHover: { color:'#fff' },
+      fleet: this.splitDesc([
+        { tag:'A · A1 · A2 · AM', title:'Motocikli i mopedi', count:'4 motocikla', banner:true, img:'https://autoskoladule.rs/wp-content/uploads/2020/12/01-header-za-A-kategoriju.jpg',
+          desc:'Obuka i praktični ispit obavljaju se isključivo vozilom auto škole - obuka na sopstvenom motoru po novom pravilniku nije dozvoljena. Škola obezbeđuje kacigu svih veličina i bluetooth vezu sa instruktorom tokom vožnje.',
+          vehicles:[
+            { name:'Suzuki Burgman 650', spec:'A kategorija · automatik · min. 600 cm³ / 40 kW' },
+            { name:'Piaggio Beverly 500', spec:'A2 kategorija · automatik · min. 400 cm³ / 25 kW' },
+            { name:'YIYING Benzhou 50', spec:'AM kategorija · moped do 49 cm³' },
+          ],
+          uslovi:[
+            { k:'AM', v:'Upis sa 15, praktični ispit sa 16 godina.' },
+            { k:'A1', v:'Upis sa 15, ispit sa 16 godina; obezbeđeni kaciga, potkapa i bluetooth.' },
+            { k:'A2', v:'Motocikli do 35 kW; obuka na vozilu min. 400 cm³ / 25 kW.' },
+            { k:'A', v:'Upis sa 23, ispit sa 24 godine - ili ranije sa A2 kategorijom starijom od 2 godine.' },
+          ] },
+        { tag:'B · BE', title:'Putnička vozila', count:'6 putničkih vozila', photo:true, img:'https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9591-01-1024x683.jpeg',
+          desc:'Moderna, dvostruko komandovana putnička vozila za praktičnu obuku i polaganje ispita. Biraš vozilo, instruktora i termin koji ti odgovara.',
+          vehicles:[
+            { name:'VW Polo', spec:'B kategorija · dva vozila (belo i crveno)' },
+            { name:'VW Golf 5', spec:'B kategorija' },
+            { name:'Fiat 500 (Fića)', spec:'B kategorija' },
+          ],
+          uslovi:[
+            { k:'B', v:'Upis sa 16, praktični ispit sa 17 godina; tokom trajanja obuke, obavezno sa sobom nositi ličnu kartu.' },
+            { k:'Obuka', v:'40 časova teorijske nastave + 40 časova vožnje.' },
+            { k:'BE', v:'Skup vozila sa prikolicom 750–3.500 kg uslovi su 21 godina + dozvola B kategorije, 7 časova obuke.' },
+            { k:'Probna', v:'Do 21. godine: zabrana vožnje 23–06h, bez telefona i alkohola, ograničena brzina kretanja.' },
+          ],
+          gallery:[
+            'https://autoskoladule.rs/wp-content/uploads/2020/12/vw-polo-beli-B-kategorija.jpg',
+            'https://autoskoladule.rs/wp-content/uploads/2020/12/vw-polo-crveni-obuka-vozaca-krusevac.jpg',
+            'https://autoskoladule.rs/wp-content/uploads/2020/12/VW-GOLF-5-skola-dule-krusevac.jpg',
+            'https://autoskoladule.rs/wp-content/uploads/2020/12/fiat-500-fica.jpg',
+          ] },
+        { tag:'C · CE', title:'Teretno i priključno', count:'1 teretno · 2 priključna', banner:true, img:'https://autoskoladule.rs/wp-content/uploads/2020/12/01-header-za-c-kategoriju.jpg',
+          desc:'Obuka za teretna vozila obavlja se u klimatizovanom kamionu, uz priključna vozila za BE i CE kategoriju.',
+          vehicles:[
+            { name:'Klimatizovani kamion', spec:'C kategorija · NDM preko 12.000 kg, dužina preko 8 m, zatvoreni tovarni sanduk' },
+            { name:'Priključno vozilo (prikolica)', spec:'CE kategorija · dužina min. 7,5 m, zatvoreni tovarni sanduk' },
+            { name:'Auto prikolica', spec:'BE kategorija · 750–3.500 kg' },
+          ],
+          uslovi:[
+            { k:'C', v:'Upis sa 20, ispit sa 21; potrebna dozvola B kategorije (ne probna). 7 časova teorije + 15 časova vožnje.' },
+            { k:'CE', v:'Potrebna dozvola C kategorije. 7 časova teorije + praktični ispit.' },
+            { k:'BE', v:'Min. 21 godina + dozvola B kategorije i lekarsko uverenje. 7 časova obuke + praktični ispit.' },
+          ] },
+      ]),
+      partners: [
+        'https://autoskoladule.rs/wp-content/uploads/2020/12/udrzenje-bajkera-krusevac-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/motocros-club-globare-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/lion-taxi-logo-1-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/moto-centar-gajic-150x150.png',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

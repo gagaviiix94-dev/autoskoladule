@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./mobile.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f6f5f2}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:var(--accent,#e11221)}
+  ::selection{background:#e11221;color:#fff}
+  .dule-btn{transition:transform .35s cubic-bezier(.22,.68,.35,1),box-shadow .35s cubic-bezier(.22,.68,.35,1),background .25s,color .25s,border-color .25s}
+  .dule-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 38px -18px rgba(0,0,0,.35),0 0 30px -8px rgba(225,18,33,.45)}
+  @media (prefers-reduced-motion:reduce){.dule-btn:hover{transform:none}}
+  .dule-tilt::after{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:var(--accent,#e11221);border-radius:18px 18px 0 0}
+  .dule-tilt:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 34px 60px -28px rgba(0,0,0,.34),0 0 42px -6px rgba(225,18,33,.42)}
+  .dule-tilt > *{transform:translateZ(24px)}
+  @media (prefers-reduced-motion:reduce){.dule-tilt:hover{transform:translateY(-4px)}}
+  @keyframes dule-slide-in{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+  .dule-stagger > *{opacity:0}
+  .dule-full .dule-stagger > *{animation:dule-slide-in .55s cubic-bezier(.22,.68,.35,1) forwards}
+  .dule-full .dule-stagger > *:nth-child(1){animation-delay:.08s}
+  .dule-full .dule-stagger > *:nth-child(2){animation-delay:.2s}
+  .dule-full .dule-stagger > *:nth-child(3){animation-delay:.32s}
+  .dule-full .dule-stagger > *:nth-child(4){animation-delay:.44s}
+  .dule-full .dule-stagger > *:nth-child(5){animation-delay:.56s}
+  .dule-full .dule-stagger > *:nth-child(6){animation-delay:.68s}
+  @media (prefers-reduced-motion:reduce){.dule-stagger > *{opacity:1}.dule-full .dule-stagger > *{animation:none}}
+  .dule-reveal{opacity:0;transform:translateY(30px);transition:opacity .75s cubic-bezier(.22,.68,.35,1),transform .75s cubic-bezier(.22,.68,.35,1)}
+  .dule-reveal.dule-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.dule-reveal{opacity:1;transform:none;transition:none}}
+  .dule-link{position:relative;display:inline-block}
+  .dule-link::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--accent,#e11221);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,.68,.35,1)}
+  .dule-link:hover::after{transform:scaleX(1)}
+  .dule-underline::after{content:"";display:block;width:52px;height:4px;background:var(--accent,#e11221);margin-top:14px}
+  @keyframes dule-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes dule-rise{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise2{0%,16%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise3{0%,28%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise4{0%,40%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  html[data-preloading] *{animation-play-state:paused!important}
+  @keyframes dule-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .dule-marquee-track{display:flex;width:max-content;animation:dule-marquee 26s linear infinite}
+</style>
+<script src="./preloader.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" class="dule-page" style="--accent:#e11221;--accent-dark:#a50d18;--ink:#161719;--muted:#6b6d72;--line:#e6e4e0;--bg:#ffffff;--soft:#f2f0ec;--dark:#141518;font-family:Barlow,system-ui,sans-serif;color:#161719;background:#f6f5f2">
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 24px 14px 12px;display:flex;align-items:center;gap:28px">
+      <a href="#" style="flex-shrink:0"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:54px;display:block"></a>
+      <nav class="dule-nav-desktop" style="margin-left:auto;display:flex;align-items:center;gap:4px;font-family:Oswald;font-weight:500;font-size:15px;letter-spacing:.04em;text-transform:uppercase">
+        <a href="#" class="dule-link" style="padding:10px 13px;color:var(--accent)">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html" class="dule-link" style="padding:10px 13px">Naš tim</a>
+        <a href="Kategorije.dc.html" class="dule-link" style="padding:10px 13px">Kategorije</a>
+        <a href="Cenovnik.dc.html" class="dule-link" style="padding:10px 13px">Cenovnik</a>
+        <a href="Vozila.dc.html" class="dule-link" style="padding:10px 13px">Vozila</a>
+        <a href="O%20nama.dc.html" class="dule-link" style="padding:10px 13px">O nama</a>
+        <a href="#kontakt" class="dule-link" style="padding:10px 13px">Kontakt</a>
+      </nav>
+      <a href="Kategorije.dc.html#upis-forma" class="dule-btn dule-top-cta" style="flex-shrink:0;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;padding:12px 20px;border-radius:9px" style-hover="{{ ctaHover }}">Online upis</a>
+      <input id="dule-mnav" type="checkbox" class="dule-mnav-cb" aria-label="Meni">
+      <label for="dule-mnav" class="dule-burger" aria-label="Otvori meni"><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span></label>
+      <nav class="dule-drawer">
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html">Naš tim</a>
+        <a href="Kategorije.dc.html">Kategorije</a>
+        <a href="Cenovnik.dc.html">Cenovnik</a>
+        <a href="Vozila.dc.html">Vozila</a>
+        <a href="O%20nama.dc.html">O nama</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="dule-drawer-cta" href="Kategorije.dc.html#upis-forma">Online upis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;background:var(--dark);color:#fff;overflow:hidden;isolation:isolate">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;top:-340px;left:26%;transform:translateX(-50%);width:720px;height:720px;border-radius:50%;background:rgba(225,18,33,.28);filter:blur(150px)"></div>
+      <div style="position:absolute;bottom:-300px;right:-160px;width:640px;height:640px;border-radius:50%;background:rgba(249,115,22,.16);filter:blur(160px)"></div>
+      <div style="position:absolute;inset:0;opacity:.07;background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:72px 72px"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,21,24,.18),rgba(20,21,24,.88))"></div>
+    </div>
+
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:92px 24px 100px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:999px;font-family:Oswald;letter-spacing:.2em;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.72);animation:dule-rise 1.05s cubic-bezier(.22,.68,.35,1) forwards"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>Upis u toku · Kruševac &amp; Varvarin</div>
+        <h1 style="font-family:Oswald;font-weight:700;font-size:70px;line-height:1.18;letter-spacing:-.01em;text-transform:uppercase;margin-top:26px;animation:dule-rise2 1.15s cubic-bezier(.22,.68,.35,1) forwards;white-space:nowrap"><span style="color: rgb(225, 18, 33); letter-spacing: -0.01em;">SIGURNI&nbsp;</span>Za volanom<br>od prvog časa</h1>
+        <p style="font-size:18px;line-height:1.62;color:#d3d2cf;max-width:680px;text-wrap:balance;margin-top:34px;animation:dule-rise3 1.25s cubic-bezier(.22,.68,.35,1) forwards">Obuka koja se prilagođava tebi - jasni termini, mirni instruktori i vozila na kojima ćeš zaista polagati. Ti biraš instruktora, vozilo i termin obuke.</p>
+        <div class="dule-hero-cta" style="display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;animation:dule-rise4 1.35s cubic-bezier(.22,.68,.35,1) forwards">
+          <a href="Kategorije.dc.html#upis-forma" class="dule-btn" style="display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:15px 28px;border-radius:999px;box-shadow:0 18px 40px -16px rgba(225,18,33,.7);transition:.3s" style-hover="{{ ctaHover }}">Zakaži prvi čas <span style="display:inline-flex;align-items:center;line-height:1;font-size:18px;transform:translateY(-2px)">→</span></a>
+          <a href="Cenovnik.dc.html" class="dule-btn" style="border:1.5px solid rgba(255,255,255,.3);color:#fff;font-family:Oswald;font-weight:500;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:15px 28px;border-radius:999px;transition:.3s" style-hover="{{ ghostHover }}">Pogledaj cenovnik</a>
+        </div>
+      </div>
+
+      <div style="margin-left:auto;width:100%;max-width:400px">
+        <div style="border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);backdrop-filter:blur(14px);border-radius:28px;padding:28px;animation:dule-drift 7s ease-in-out infinite;transition:.35s" style-hover="{{ glassHover }}">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="background:rgba(52,211,153,.16);color:#6ee7b7;font-family:Oswald;letter-spacing:.1em;text-transform:uppercase;font-size:12px;padding:5px 12px;border-radius:999px">Ima mesta</span>
+            <span style="font-size:13px;color:rgba(255,255,255,.45)">Nova grupa</span>
+          </div>
+          <div style="font-family:Oswald;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:rgba(255,255,255,.45);margin-top:24px">Najtraženije</div>
+          <div style="font-family:Oswald;font-weight:700;font-size:40px;text-transform:uppercase;line-height:1.05;margin-top:4px">B kategorija</div>
+          <div style="margin-top:22px;display:flex;flex-direction:column;gap:12px;font-size:15px;color:rgba(255,255,255,.7)">
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px"><span>Teorija</span><span style="color:#fff;font-weight:600">40 časova</span></div>
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px"><span>Vožnja</span><span style="color:#fff;font-weight:600">40 časova</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Plaćanje</span><span style="color:#fff;font-weight:600">na rate</span></div>
+          </div>
+          <a href="Kategorije.dc.html#upis-forma" class="dule-btn" style="display:flex;align-items:center;justify-content:center;margin-top:26px;background:#fff;color:var(--dark);font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;padding:14px;border-radius:999px;transition:.3s" style-hover="{{ whiteBtnHover }}">Rezerviši mesto</a>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;background:var(--accent);color:#fff;font-family:Oswald;letter-spacing:.05em;text-transform:uppercase;font-size:14px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap;padding:14px 24px">
+      <span>Izbor instruktora</span><span>Izbor vozila</span><span>Izbor termina</span><span>Online predavanja</span>
+    </div>
+  </section>
+
+  <!-- KATEGORIJE -->
+  <section id="kategorije" style="max-width:1240px;margin:0 auto;padding:88px 24px 20px">
+    <div style="text-align:center;margin-bottom:52px">
+      <div style="font-family:Oswald;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>naše kategorije</div>
+      <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:40px;letter-spacing:-.01em">IZABERI SVOJU KATEGORIJU</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;perspective:1200px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="3">
+        <div class="dule-tilt" style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 30px;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,.68,.35,1),box-shadow .5s cubic-bezier(.22,.68,.35,1)">
+          <div style="width:150px;height:104px;border-radius:20px;background:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:24px;padding:16px 20px;box-shadow:0 14px 30px -12px rgba(225,18,33,.5)"><img src="{{ c.icon }}" alt="" style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1)"></div>
+          <div style="font-family:Oswald;font-weight:700;font-size:30px;text-transform:uppercase;letter-spacing:.02em">{{ c.title }}</div>
+          <div style="font-family:Oswald;color:var(--accent);letter-spacing:.08em;font-size:14px;margin:4px 0 16px">{{ c.subs }}</div>
+          <p style="font-size:15.5px;line-height:1.62;color:var(--muted)">{{ c.desc }}</p>
+          <a href="{{ c.href }}" onClick="{{ c.go }}" class="dule-link" style="display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:14px;font-weight:600;color:var(--accent)">Saznaj više <span style="display:inline-flex;align-items:center;line-height:1;transform:translateY(-2px)">→</span></a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- USLUGE / FEATURE CARDS -->
+  <section id="upis" style="max-width:1240px;margin:0 auto;padding:78px 24px">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:26px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <div style="position:relative;border-radius:18px;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff" style-hover="{{ mediaHover }}">
+          <img src="{{ s.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,16,18,.92),rgba(15,16,18,.25) 60%,rgba(15,16,18,.05))"></div>
+          <div style="position:relative;padding:32px">
+            <sc-if value="{{ s.tag }}" hint-placeholder-val="ax">
+              <span style="display:inline-block;background:var(--accent);font-family:Oswald;letter-spacing:.08em;text-transform:uppercase;font-size:12px;padding:5px 11px;border-radius:6px;margin-bottom:14px">{{ s.tag }}</span>
+            </sc-if>
+            <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:27px;letter-spacing:.01em">{{ s.title }}</h3>
+            <p class="dule-service-text" style="font-size:15.5px;line-height:1.55;color:#dcdbd8;margin-top:8px;max-width:440px">{{ s.text }}</p>
+            <a href="{{ s.href }}" class="dule-link" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:14px;font-weight:600;color:#fff;padding-bottom:3px">{{ s.cta }} <span style="display:inline-flex;align-items:center;line-height:1;transform:translateY(-2px)">→</span></a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ZAŠTO BAŠ MI -->
+  <section id="onama" style="background:var(--dark);color:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:90px 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div style="position:relative">
+        <img src="https://autoskoladule.rs/wp-content/uploads/2023/07/IMG_5180-1-1024x683.jpg" alt="" style="width:100%;border-radius:18px;display:block">
+        <div style="position:absolute;bottom:-28px;left:-28px;background:var(--accent);border-radius:16px;padding:24px 30px;box-shadow:0 24px 50px -18px rgba(0,0,0,.5)"><div ref="{{ pctRef }}" style="font-family:Oswald;font-weight:700;font-size:52px;line-height:1;font-variant-numeric:tabular-nums">80%</div><div style="font-size:14px;letter-spacing:.02em">upisano na preporuku</div></div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:14px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>zašto baš mi?</div>
+        <h2 class="dule-underline" style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:38px;line-height:1.08">Preko 80% kandidata je upisano na preporuku</h2>
+        <p style="font-size:16px;line-height:1.68;color:#cfcecb;margin-top:28px">Trudimo se da svaki kandidat položi vozački ispit iz prvog puta. Instruktori će svakog polaznika posavetovati kako da se izbori sa tremom pre vozačkog ispita i na koje segmente vožnje treba posebno da obrati pažnju.</p>
+        <p style="font-size:16px;line-height:1.68;color:#cfcecb;margin-top:16px">Važno nam je da svaki polaznik bude dobar vozač koji nikada neće ugroziti ni sebe ni druge učesnike u saobraćaju.</p>
+        <div style="display:flex;gap:12px;margin-top:30px">
+          <a href="https://www.google.com/search?sca_esv=d8a061f2a601c51f&amp;sxsrf=APpeQntwM7whOYNmTh5HLuRBmLjGfy5f9g:1785104084475&amp;si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_x6NUjMRnuB4L0oqFfRUGPsoqt-xDtGmpRRrkmWZVrWiX94eAEWpCiakNcGqE0U9-xN6M6Aw10f2Dn5UnFlMxrXwYRyb2kbX2yZQ78uixV6L2xKBIQ%3D%3D&amp;q=Auto+%C5%A1kola+Dule+%D0%A0%D0%B5%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%98%D0%B5&amp;sa=X&amp;ved=2ahUKEwiLiN72rvGVAxUfRvEDHdurD10Q0bkNegQIPhAH" target="_blank" rel="noopener" class="dule-btn" style="display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:15px 28px;border-radius:999px;box-shadow:0 18px 40px -16px rgba(225,18,33,.7);transition:.3s" style-hover="{{ ctaHover }}">Utisci kandidata <span style="display:inline-flex;align-items:center;line-height:1;font-size:18px;transform:translateY(-2px)">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / QUICK LINKS -->
+  <section id="vozila" style="max-width:1240px;margin:0 auto;padding:88px 24px 30px">
+    <div ref="{{ statsRef }}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+      <sc-for list="{{ stats }}" as="q" hint-placeholder-count="4">
+        <a href="{{ q.href }}" style="position:relative;border-radius:16px;overflow:hidden;display:block;aspect-ratio:1/1.04;color:#fff" style-hover="{{ mediaHover }}">
+          <img src="{{ q.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,16,18,.9),rgba(15,16,18,.1) 65%)"></div>
+          <div style="position:absolute;bottom:0;left:0;padding:22px">
+            <div style="font-family:Oswald;font-weight:700;font-size:26px;text-transform:uppercase;line-height:1.05">{{ q.n }}</div>
+            <div style="font-family:Oswald;letter-spacing:.05em;text-transform:uppercase;font-size:12.5px;color:var(--accent);margin-top:8px">{{ q.link }} <span style="display:inline-flex;align-items:center;line-height:1;transform:translateY(-2px)">→</span></div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- NAPREDNI NIVO -->
+  <section id="tim" style="max-width:1240px;margin:0 auto;padding:70px 24px">
+    <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:52px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:56px;align-items:end">
+      <div>
+        <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>napredni nivo</div>
+        <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:32px;line-height:1.08;text-wrap:balance">Obuka polaznika<br>naprednog nivoa</h2>
+        <p style="font-size:16px;line-height:1.66;color:var(--muted);margin-top:18px;text-wrap:balance">Rad sa kandidatima uči nas da je strpljenje temelj kvalitetnog rada tokom vozačke obuke.</p>
+        <div class="dule-stagger" style="display:flex;flex-direction:column;gap:14px;margin-top:44px">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:14px;background:var(--soft);border-radius:12px;padding:18px 20px">
+            <span style="font-family:Oswald;font-weight:700;color:var(--accent);font-size:20px;min-width:26px">0{{ t.n }}</span>
+            <span style="font-size:15px;font-weight:500;line-height:1.35">{{ t.label }}</span>
+          </div>
+        </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <div ref="{{ parkRef }}" class="dule-lot" style="position:relative;width:440px;max-width:100%;height:560px;border-radius:18px;overflow:hidden;background:#2a2d33;box-shadow:inset 0 0 70px rgba(0,0,0,.5)">
+          <div style="position:absolute;inset:0;background:radial-gradient(120px 90px at 18% 22%,rgba(255,255,255,.05),transparent 70%),radial-gradient(160px 120px at 78% 68%,rgba(255,255,255,.04),transparent 72%),radial-gradient(90px 70px at 62% 14%,rgba(0,0,0,.28),transparent 70%),radial-gradient(140px 90px at 26% 82%,rgba(0,0,0,.3),transparent 72%)"></div>
+          <div style="position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(38deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px),repeating-linear-gradient(-52deg,rgba(0,0,0,.06) 0 3px,transparent 3px 7px)"></div>
+
+          <div style="position:absolute;left:0;right:0;top:0;height:26px;background:linear-gradient(to bottom,#9a978f,#c3c0b8 45%,#8d8a83);border-bottom:2px solid rgba(0,0,0,.35)"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(to bottom,#8d8a83,#c3c0b8 30%,#b3b0a8 62%,#415b3c 62%,#35502f)"></div>
+          <div style="position:absolute;right:0;top:26px;bottom:34px;width:14px;background:linear-gradient(to left,#b3b0a8,#8e8b84);border-left:2px solid rgba(0,0,0,.32)"></div>
+
+          <div style="position:absolute;left:104px;top:8px;width:12px;height:12px;border-radius:50%;background:#e9e6dd;box-shadow:0 0 8px rgba(255,244,214,.9)"></div>
+          <div style="position:absolute;left:36px;top:14px;width:150px;height:190px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,241,204,.16),transparent);pointer-events:none"></div>
+          <div style="position:absolute;left:322px;top:8px;width:12px;height:12px;border-radius:50%;background:#e9e6dd;box-shadow:0 0 8px rgba(255,244,214,.9)"></div>
+          <div style="position:absolute;left:254px;top:14px;width:150px;height:190px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,241,204,.16),transparent);pointer-events:none"></div>
+
+          <div style="position:absolute;left:0;right:0;top:278px;height:4px;background:repeating-linear-gradient(to right,rgba(238,235,226,.6) 0 26px,transparent 26px 52px)"></div>
+          <div style="position:absolute;left:26px;top:262px;width:16px;height:5px;border-radius:2px;background:rgba(240,237,228,.55);transform:rotate(38deg)"></div>
+          <div style="position:absolute;left:26px;top:292px;width:16px;height:5px;border-radius:2px;background:rgba(240,237,228,.55);transform:rotate(-38deg)"></div>
+          <div style="position:absolute;left:22px;top:34px;width:132px;height:180px;border-left:3px solid rgba(238,235,226,.55);border-right:3px solid rgba(238,235,226,.55);border-top:3px solid rgba(238,235,226,.45)"></div>
+          <div style="position:absolute;left:154px;top:34px;width:132px;height:180px;border-right:3px solid rgba(238,235,226,.55);border-top:3px solid rgba(238,235,226,.45)"></div>
+          <div style="position:absolute;left:286px;top:34px;width:132px;height:180px;border-right:3px solid rgba(238,235,226,.5);border-top:3px solid rgba(238,235,226,.4)"></div>
+          <div style="position:absolute;left:22px;top:346px;width:132px;height:180px;border-left:3px solid rgba(238,235,226,.5);border-right:3px solid rgba(238,235,226,.55);border-bottom:3px solid rgba(238,235,226,.45)"></div>
+          <div style="position:absolute;left:154px;top:346px;width:132px;height:180px;border-right:3px solid rgba(238,235,226,.6);border-bottom:3px solid rgba(238,235,226,.45)"></div>
+          <div style="position:absolute;left:286px;top:346px;width:132px;height:180px;border-right:3px solid rgba(238,235,226,.5);border-bottom:3px solid rgba(238,235,226,.4)"></div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 14px rgba(0,0,0,.5))" data-car="1">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#a2a7ae,#7d838b 42%,#5f646b)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#31353b,#22262b)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#8f949b"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#31353b,#22262b)"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 14px rgba(0,0,0,.5))" data-car="2">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#3c4b63,#2e3a4d 42%,#232c3b)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#20262f,#171c23)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#35425a"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#20262f,#171c23)"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 14px rgba(0,0,0,.5))" data-car="3">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#e8eaec,#c9ccd0 42%,#a5a9ae)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#4a4f57,#33373d)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#d8dbdf"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#4a4f57,#33373d)"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));" data-pass="1">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#4a4f57,#34383e 42%,#23262b)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#2a2e34,#1b1e22)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#3d424a"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#2a2e34,#1b1e22)"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));" data-car="4">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#dfe2e5,#c2c6cb 42%,#9ea3a9)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#454b53,#2f343a)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#d3d7db"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#454b53,#2f343a)"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));" data-car="5">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#f0303f,var(--accent) 40%,#a00d18)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#2c3037,#1d2126)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#e5202f"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#2c3037,#1d2126)"></div>
+            <div style="position:absolute;left:57px;top:-4px;width:8px;height:5px;border-radius:2px;background:#8f1520"></div>
+            <div style="position:absolute;left:57px;bottom:-4px;width:8px;height:5px;border-radius:2px;background:#8f1520"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:104px;height:50px;transform:translate(-160px,255px);filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));" data-car="6">
+            <div style="position:absolute;inset:0;border-radius:16px/22px;background:linear-gradient(to bottom,#2f4b7a,#24395e 42%,#1a2b47)"></div>
+            <div style="position:absolute;left:18px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:18px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;top:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:70px;bottom:-3px;width:22px;height:8px;border-radius:3px;background:#15171a"></div>
+            <div style="position:absolute;left:22px;top:7px;width:12px;height:36px;border-radius:4px;background:linear-gradient(to right,#1c2635,#141c28)"></div>
+            <div style="position:absolute;left:36px;top:5px;width:26px;height:40px;border-radius:5px;background:#2a4269"></div>
+            <div style="position:absolute;left:63px;top:7px;width:14px;height:36px;border-radius:4px;background:linear-gradient(to left,#1c2635,#141c28)"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKACIJA -->
+  <section id="kontakt" style="max-width:1240px;margin:0 auto;padding:70px 24px 40px">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="font-family:Oswald;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>gde se nalazimo</div>
+      <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:40px;letter-spacing:-.01em">MOŽETE NAS PRONAĆI NA DVE LOKACIJE</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:stretch">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <sc-for list="{{ locations }}" as="l" hint-placeholder-count="2">
+          <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 30px">
+            <div style="font-family:Oswald;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-size:12px;margin-bottom:10px">{{ l.city }}</div>
+            <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:24px">Auto škola Dule</h3>
+            <div style="margin-top:18px;display:flex;flex-direction:column;gap:11px;font-size:15.5px;color:var(--ink)">
+              <div style="display:flex;gap:12px"><span style="color:var(--accent);font-weight:700">◆</span>{{ l.addr }}</div>
+              <div style="display:flex;gap:12px"><span style="color:var(--accent);font-weight:700">☏</span><a href="tel:0606037037" class="dule-link" style="font-weight:600">060 6 037 037</a></div>
+              <div style="display:flex;gap:12px"><span style="color:var(--accent);font-weight:700">✉</span><a href="mailto:autoskoladule@gmail.com" class="dule-link">autoskoladule@gmail.com</a></div>
+              <div style="display:flex;gap:12px"><span style="color:var(--accent);font-weight:700">◷</span>{{ l.hours }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:440px;background:var(--soft);display:flex;flex-direction:column">
+        <div style="display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line);background:#fff">
+          <button type="button" onClick="{{ showKs }}" class="dule-btn" style="{{ ksStyle }}">Kruševac</button>
+          <button type="button" onClick="{{ showVa }}" class="dule-btn" style="{{ vaStyle }}">Varvarin</button>
+        </div>
+        <iframe title="Mapa - Auto škola Dule" src="{{ mapSrc }}" style="width:100%;flex:1;min-height:390px;border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT FORMA -->
+  <section id="pitanje" style="max-width:1240px;margin:0 auto;padding:20px 24px 60px;scroll-margin-top:96px">
+    <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:44px 46px;display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:start">
+      <div>
+        <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>imaš pitanje?</div>
+        <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.06;letter-spacing:-.01em">PIŠI NAM DIREKTNO SA SAJTA</h2>
+        <p style="font-size:15.5px;line-height:1.65;color:var(--ink);margin-top:16px;text-wrap:pretty">Bez otvaranja mejla i telefoniranja. Ostavi pitanje i kontakt, a mi odgovaramo istog radnog dana.</p>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;font-size:15px">
+          <div style="display:flex;gap:12px;align-items:center"><span style="color:var(--accent);font-weight:700">☏</span><a href="tel:0606037037" class="dule-link" style="font-weight:600">060 6 037 037</a></div>
+          <div style="display:flex;gap:12px;align-items:center"><span style="color:var(--accent);font-weight:700">✉</span><a href="mailto:autoskoladule@gmail.com" class="dule-link">autoskoladule@gmail.com</a></div>
+        </div>
+      </div>
+      <div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid var(--accent);border-radius:16px;padding:36px 32px;background:#fdf3f4">
+            <div style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:24px;color:var(--accent)">Pitanje je poslato</div>
+            <p style="font-size:15.5px;line-height:1.6;margin-top:10px">Hvala! Odgovaramo na tvoje pitanje u najkraćem roku, na kontakt koji si ostavio.</p>
+            <button type="button" onClick="{{ resetForm }}" class="dule-btn" style="margin-top:22px;font-family:Oswald;text-transform:uppercase;letter-spacing:.1em;font-size:13px;background:none;border:1px solid var(--line);border-radius:10px;padding:12px 22px;cursor:pointer" style-hover="{{ dropHover }}">Pošalji novo pitanje</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px">
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:Oswald;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:#6d6b67">Ime i prezime</span>
+            <input required="required" name="name" type="text" placeholder="Petar Petrović" style="border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--soft);width:100%;box-sizing:border-box">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:Oswald;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:#6d6b67">Telefon</span>
+            <input required="required" name="phone" type="tel" placeholder="06x xxx xxxx" style="border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--soft);width:100%;box-sizing:border-box">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:Oswald;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:#6d6b67">E-mail (opciono)</span>
+            <input name="email" type="email" placeholder="petar@primer.rs" style="border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--soft);width:100%;box-sizing:border-box">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:Oswald;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:#6d6b67">Kategorija</span>
+            <select name="cat" style="border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--soft);width:100%;box-sizing:border-box">
+              <option>Nisam siguran / opšte pitanje</option>
+              <option>A · A1 · A2 · AM</option>
+              <option>B · BE</option>
+              <option>C · CE</option>
+              <option>Kondicioni časovi</option>
+            </select>
+          </label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:Oswald;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;color:#6d6b67">Pitanje</span>
+            <textarea required="required" name="msg" rows="5" placeholder="Npr. koliko traje obuka za B kategoriju i kada je sledeći upis?" style="border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--soft);width:100%;box-sizing:border-box;resize:vertical"></textarea>
+          </label>
+          <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+            <span style="font-size:13px;color:#6d6b67">Odgovaramo radnim danima 09-19h.</span>
+            <button type="submit" class="dule-btn" style="background:var(--accent);color:#fff;border:0;border-radius:12px;padding:15px 34px;font-family:Oswald;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:14px;cursor:pointer" style-hover="{{ ctaHover }}">Pošalji pitanje</button>
+          </div>
+        </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERI -->
+  <section id="galerija" style="max-width:1240px;margin:0 auto;padding:40px 24px 60px;text-align:center">
+    <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:10px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>prijatelji auto škole</div>
+    <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:30px;margin-bottom:36px">NAŠI PARTNERI</h2>
+    <div style="display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap">
+      <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;width:150px;height:150px;display:flex;align-items:center;justify-content:center;padding:22px" style-hover="{{ cardHover }}"><img src="{{ p }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain"></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--dark);color:#cfcecb">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px">
+      <div>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html" style="display:inline-block"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:60px;background:#fff;padding:10px 14px;border-radius:10px;display:block"></a>
+        <p style="font-size:14.5px;line-height:1.6;margin-top:20px;max-width:300px">Vozi sigurno, uči sa najboljima. Obuka za sve kategorije uz izbor instruktora, vozila i termina.</p>
+        <div style="display:flex;gap:10px;margin-top:20px">
+          <a href="https://www.facebook.com/dule.autoskola/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a>
+          <a href="https://www.instagram.com/autoskoladule/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://www.youtube.com/channel/UC92BBUXjT8KW2FbSgrHSTdQ" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.42A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77c1.53.43 8.83.43 8.83.43s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Kruševac</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobodana Jovanovića 6<br>060 6 037 037<br>pon–pet: 09–17h<br>subota: 09–14h</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Varvarin</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobode 94<br>060 6 037 037<br>pon–pet: 08–15h<br>subota: ne radimo</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Prijatelji sajta</div>
+        <div style="font-size:14.5px;line-height:2;display:flex;flex-direction:column">
+          <a href="http://www.mcg.rs/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Moto centar Gajić</a>
+          <a href="https://www.instagram.com/nezavisno_udruzenje_bajkera/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Udruženje bajkera</a>
+          <a href="https://www.facebook.com/Motocross-club-Gajic-1584827075112432/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Motocross club Gajić</a>
+          <a href="https://www.facebook.com/liontaxi.ks/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Lion Taxi</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1)"><div style="max-width:1240px;margin:0 auto;padding:22px 24px;font-size:13px;color:#8b8a87;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><span>Auto škola Dule Kruševac 2026 · Sva prava zadržana</span><span>2 lokacije · 8 kategorija · 12 vozila</span></div></div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e11221&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e11221&quot;,&quot;#c8102e&quot;,&quot;#d1232a&quot;,&quot;#1a1a1a&quot;]}}">
+class Component extends DCLogic {
+  state = { catOpen: false, sent: false, loc: 'ks' };
+  mapBtn(active){
+    return { fontFamily:'Oswald', textTransform:'uppercase', letterSpacing:'.1em', fontSize:'12.5px',
+      padding:'10px 18px', borderRadius:'9px', cursor:'pointer',
+      border:'1px solid ' + (active ? 'var(--accent)' : 'var(--line)'),
+      background: active ? 'var(--accent)' : '#fff', color: active ? '#fff' : 'var(--ink)' };
+  }
+  rootRef = React.createRef();
+  parkRef = React.createRef();
+  pctRef = React.createRef();
+  statsRef = React.createRef();
+  initStatsFade(){ this.whenRef(this.statsRef, (el) => this.fadeCards(el, 140)); }
+  whenRef(ref, cb){
+    let n = 0;
+    const tick = () => {
+      if (ref.current) return cb(ref.current);
+      if (++n < 40) setTimeout(tick, 120);
+    };
+    tick();
+  }
+  onVisible(el, cb){
+    let done = false, waited = 0;
+    const inView = () => { const r = el.getBoundingClientRect(); return r.top < (window.innerHeight || 0) * 0.9 && r.bottom > 40; };
+    const poll = () => {
+      if (done) return;
+      waited += 200;
+      if (inView()) { done = true; cb(); return; }
+      setTimeout(poll, 200);
+    };
+    setTimeout(poll, 700);
+  }
+  fadeCards(grid, gap){
+    if (!grid) return;
+    if (!grid.children.length) { setTimeout(() => this.fadeCards(grid, gap), 120); return; }
+    const cards = Array.from(grid.children);
+    cards.forEach((c) => {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(26px)';
+      c.style.transition = 'opacity .8s cubic-bezier(.22,.68,.35,1), transform .8s cubic-bezier(.22,.68,.35,1)';
+    });
+    this.onVisible(grid, () => {
+      cards.forEach((c, i) => setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'none'; }, 1000 + i * gap));
+    });
+  }
+  initCount(){
+    const el = this.pctRef.current;
+    if (!el) return;
+    el.textContent = '0%';
+    const run = () => {
+      const dur = 1600, t0 = performance.now();
+      const step = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * 80) + '%';
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    this.onVisible(el, () => setTimeout(run, 1000));
+  }
+  componentDidMount(){
+    const a = this.props.accentColor;
+    if (a && this.rootRef.current){
+      this.rootRef.current.style.setProperty('--accent', a);
+    }
+    this.startLot();
+    this.initReveal();
+    this.whenRef(this.pctRef, () => this.initCount());
+    this.initStatsFade();
+    this.jumpToHash();
+  }
+  jumpToHash(){
+    const id = (location.hash || '').slice(1);
+    if (!id) return;
+    let tries = 0;
+    const go = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 78;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        return;
+      }
+      if (++tries < 30) setTimeout(go, 150);
+    };
+    setTimeout(go, 350);
+  }
+  initReveal(){
+    const root = this.rootRef.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll(':scope > section, :scope > footer')).slice(1);
+    if (!targets.length) return;
+    targets.forEach(el => el.classList.add('dule-reveal'));
+    const check = () => {
+      const h = window.innerHeight || 800;
+      let left = 0;
+      targets.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (!el.classList.contains('dule-in') && r.top < h * 0.92) el.classList.add('dule-in');
+        if (!el.classList.contains('dule-full')){
+          const vis = Math.min(r.bottom, h) - Math.max(r.top, 0);
+          if (vis >= Math.min(r.height, h) * 0.85) el.classList.add('dule-full'); else left++;
+        }
+      });
+      if (!left && this.stopReveal) this.stopReveal();
+    };
+    this.onRevealScroll = () => { check(); };
+    this.stopReveal = () => {
+      window.removeEventListener('scroll', this.onRevealScroll);
+      window.removeEventListener('resize', this.onRevealScroll);
+      if (this.revealIO) this.revealIO.disconnect();
+    };
+    if ('IntersectionObserver' in window){
+      this.revealIO = new IntersectionObserver((entries, io) => {
+        entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('dule-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach(el => this.revealIO.observe(el));
+    }
+    window.addEventListener('scroll', this.onRevealScroll, { passive: true });
+    window.addEventListener('resize', this.onRevealScroll);
+    check();
+  }
+  // --- nasumično parkiranje: jedno vozilo u traci, slučajno mesto/pauze ---
+  alive = true;
+  paused = true;
+  anims = new Set();
+  waiters = [];
+  aisleQ = Promise.resolve();
+  slots = [
+    { x: 36, top: true }, { x: 168, top: true }, { x: 300, top: true },
+    { x: 36, top: false }, { x: 168, top: false }, { x: 300, top: false },
+  ];
+  freeSlots = [0, 1, 2, 3, 4, 5];
+  tf(p){ return 'translate(' + p.x + 'px,' + p.y + 'px) rotate(' + p.r + 'deg)'; }
+  // dir: 1 = ulazi/izlazi sa leve strane, -1 = sa desne (vozilo okrenuto na 180°)
+  dirFor(s){ return (Math.random() < 0.5 && s.x >= 168) ? -1 : 1; }
+  stopX(s, dir){ return dir === 1 ? s.x + 100 : s.x - 100; }
+  pathIn(s, dir){
+    const sx = this.stopX(s, dir);
+    const d = dir === 1 ? -1 : 1;
+    const xs = [sx, sx + d * 18, sx + d * 54, sx + d * 84, sx + d * 98, s.x];
+    const ys = s.top ? [255, 239, 213, 173, 131, 99] : [255, 271, 297, 337, 379, 411];
+    const rs = dir === 1
+      ? (s.top ? [0, 20, 45, 70, 90, 90] : [0, -20, -45, -70, -90, -90])
+      : (s.top ? [180, 160, 135, 110, 90, 90] : [180, 200, 225, 250, 270, 270]);
+    return xs.map((x, i) => ({ x, y: ys[i], r: rs[i] }));
+  }
+  delay(ms){ return new Promise(r => setTimeout(r, ms)); }
+  rnd(a, b){ return a + Math.random() * (b - a); }
+  whenVisible(){
+    if (!this.paused) return Promise.resolve();
+    return new Promise(r => this.waiters.push(r));
+  }
+  run(el, frames, dur){
+    const a = el.animate(frames.map(f => ({ transform: this.tf(f) })), { duration: dur, easing: 'linear', fill: 'forwards' });
+    this.anims.add(a);
+    if (this.paused) a.pause();
+    return a.finished.catch(() => {}).then(() => { this.anims.delete(a); });
+  }
+  aisle(fn){
+    const p = this.aisleQ.then(() => this.whenVisible()).then(fn);
+    this.aisleQ = p.catch(() => {});
+    return p;
+  }
+  takeSlot(){
+    return new Promise(async (res) => {
+      while (this.alive){
+        if (this.freeSlots.length){
+          const i = Math.floor(Math.random() * this.freeSlots.length);
+          return res(this.freeSlots.splice(i, 1)[0]);
+        }
+        await this.delay(400);
+      }
+    });
+  }
+  async arrive(el){
+    await this.whenVisible();
+    const idx = await this.takeSlot();
+    const s = this.slots[idx], dir = this.dirFor(s), sx = this.stopX(s, dir);
+    const from = dir === 1 ? -160 : 470, rot = dir === 1 ? 0 : 180;
+    await this.aisle(async () => {
+      await this.run(el, [{ x: from, y: 255, r: rot }, { x: sx, y: 255, r: rot }], Math.abs(sx - from) / 0.21);
+      await this.delay(this.rnd(250, 900));
+      await this.run(el, this.pathIn(s, dir), this.rnd(1900, 2600));
+    });
+    return idx;
+  }
+  async depart(el, idx){
+    const s = this.slots[idx], dir = this.dirFor(s), sx = this.stopX(s, dir);
+    const to = dir === 1 ? 470 : -160, rot = dir === 1 ? 0 : 180;
+    await this.whenVisible();
+    await this.aisle(async () => {
+      await this.run(el, this.pathIn(s, dir).slice().reverse(), this.rnd(1900, 2600));
+      await this.delay(this.rnd(150, 600));
+      await this.run(el, [{ x: sx, y: 255, r: rot }, { x: to, y: 255, r: rot }], Math.abs(to - sx) / 0.21);
+    });
+    this.freeSlots.push(idx);
+  }
+  async cross(el){
+    await this.whenVisible();
+    const rtl = Math.random() < 0.5;
+    const a = rtl ? 470 : -160, b = rtl ? -160 : 470, rot = rtl ? 180 : 0;
+    await this.aisle(() => this.run(el, [{ x: a, y: 255, r: rot }, { x: b, y: 255, r: rot }], this.rnd(2600, 3600)));
+  }
+  async carLoop(el, preParked, passer){
+    let idx = null;
+    if (preParked !== null && preParked !== undefined){
+      idx = preParked;
+      const s = this.slots[idx];
+      el.style.transform = this.tf({ x: s.x, y: s.top ? 99 : 411, r: s.top ? 90 : -90 });
+      await this.delay(this.rnd(2500, 13000));
+    } else {
+      await this.delay(this.rnd(0, 9000));
+    }
+    while (this.alive){
+      if (idx === null){
+        // prolazna vozila ponekad samo prođu kroz parking, ponekad se uparkiraju
+        if (passer && Math.random() < 0.55){
+          await this.cross(el);
+          await this.delay(this.rnd(5000, 16000));
+          continue;
+        }
+        idx = await this.arrive(el);
+        await this.delay(this.rnd(4000, 15000));
+      }
+      await this.depart(el, idx);
+      idx = null;
+      await this.delay(this.rnd(2000, 12000));
+    }
+  }
+  startLot(){
+    const lot = this.parkRef.current;
+    if (!lot) return;
+    const cars = Array.from(lot.querySelectorAll('[data-car]'));
+    const pass = lot.querySelector('[data-pass]');
+    if (!cars.length) return;
+    const pre = [0, 1, 2, 3, 4, 5].sort(() => Math.random() - 0.5).slice(0, 3);
+    pre.forEach(i => { const k = this.freeSlots.indexOf(i); if (k > -1) this.freeSlots.splice(k, 1); });
+    cars.forEach((el, i) => this.carLoop(el, i < pre.length ? pre[i] : null, false));
+    if (pass) this.carLoop(pass, null, true);
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          this.paused = !e.isIntersecting;
+          this.anims.forEach(a => { try { this.paused ? a.pause() : a.play(); } catch (err) {} });
+          if (!this.paused){ const w = this.waiters; this.waiters = []; w.forEach(r => r()); }
+        });
+      }, { threshold: 0.2 });
+      io.observe(lot);
+      this.lotIO = io;
+    } else {
+      this.paused = false;
+    }
+  }
+  withGo(list){
+    return list.map(c => {
+      const anim = this.catAnims[(/kat=([abc])/.exec(c.href || '') || [])[1]];
+      return anim ? { ...c, go: (e) => { if (e) e.preventDefault(); this.lottieNav(c.href, anim); } } : { ...c, go: null };
+    });
+  }
+  catAnims = {
+    a: 'https://lottie.host/8f258381-d104-4c8b-907c-f6d545711d5f/i0cvw8VQVz.lottie',
+    b: 'https://lottie.host/6729f666-b20c-4d3b-885d-f09534a954e6/0bIOQKFFoa.lottie',
+    c: 'https://lottie.host/04d7c403-25f8-4416-93eb-78d2bf3e840e/LP7dcU274S.lottie',
+  };
+  lottieNav(url, src){
+    if (this.navigating) return;
+    this.navigating = true;
+    const wrap = document.createElement('div');
+    wrap.setAttribute('style', 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#fff;opacity:0;transition:opacity .3s ease');
+    const box = document.createElement('div');
+    box.setAttribute('style', 'width:min(300px,50vw);aspect-ratio:1/1');
+    const player = document.createElement('dotlottie-wc');
+    player.setAttribute('src', src);
+    player.setAttribute('autoplay', '');
+    player.setAttribute('loop', '');
+    player.setAttribute('style', 'width:100%;height:100%');
+    box.appendChild(player);
+    wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    requestAnimationFrame(() => { wrap.style.opacity = '1'; });
+    if (!document.querySelector('script[data-dotlottie]')){
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.dataset.dotlottie = '1';
+      s.src = 'https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js';
+      document.head.appendChild(s);
+    }
+    setTimeout(() => { window.location.href = url; }, 1800);
+  }
+  componentWillUnmount(){
+    if (this.stopReveal) this.stopReveal();
+    this.alive = false;
+    if (this.lotIO) this.lotIO.disconnect();
+  }
+  componentDidUpdate(prev){
+    if (prev.accentColor !== this.props.accentColor && this.rootRef.current){
+      this.rootRef.current.style.setProperty('--accent', this.props.accentColor || '#e11221');
+    }
+  }
+  renderVals(){
+    const acc = 'var(--accent,#e11221)';
+    return {
+      rootRef: this.rootRef,
+      parkRef: this.parkRef,
+      showBar: this.props.showBar ?? true,
+      catOpen: this.state.catOpen,
+      openCat: () => this.setState({catOpen:true}),
+      closeCat: () => this.setState({catOpen:false}),
+      mapSrc: this.state.loc === 'ks'
+        ? 'https://www.google.com/maps?q=Slobodana%20Jovanovi%C4%87a%206%2C%20Kru%C5%A1evac&output=embed'
+        : 'https://www.google.com/maps?q=Slobode%2094%2C%20Varvarin&output=embed',
+      showKs: () => this.setState({ loc:'ks' }),
+      showVa: () => this.setState({ loc:'va' }),
+      ksStyle: this.mapBtn(this.state.loc === 'ks'),
+      vaStyle: this.mapBtn(this.state.loc === 'va'),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submitForm: (e) => { e.preventDefault(); this.setState({sent:true}); },
+      resetForm: () => this.setState({sent:false}),
+      pctRef: this.pctRef,
+      statsRef: this.statsRef,
+      ctaHover: { background:'var(--accent-dark,#a50d18)', transform:'translateY(-1px)' },
+      ghostHover: { background:'rgba(255,255,255,.12)', borderColor:'#fff' },
+      glassHover: { background:'rgba(255,255,255,.1)', borderColor:'rgba(225,18,33,.45)', boxShadow:'0 30px 64px -28px rgba(0,0,0,.6)' },
+      whiteBtnHover: { background:'var(--accent,#e11221)', color:'#fff' },
+      cardHover: { transform:'translateY(-4px)', boxShadow:'0 24px 44px -22px rgba(0,0,0,.28)' },
+      mediaHover: { transform:'translateY(-4px)' },
+      socHover: { background: acc, borderColor: acc, color:'#fff' },
+      linkHover: { color:'#fff' },
+      dropHover: { background:'var(--soft,#f2f0ec)' },
+      cats: this.withGo([
+        { title:'A kategorija', subs:'A · A1 · A2 · AM', href:'Kategorije.dc.html?kat=a#kategorije-tabs', icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/a-kategorija-icon.png', desc:'Sa položenom A kategorijom možete upravljati motociklima i teškim triciklima čija je snaga motora veća od 15 KW.' },
+        { title:'B kategorija', subs:'B · BE', href:'Kategorije.dc.html?kat=b#kategorije-tabs', icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/b-kategorija-icon.png', desc:'Obezbeđujemo svojim kandidatima moderna putnička vozila za praktičnu obuku i polaganje ispita.' },
+        { title:'C kategorija', subs:'C · CE', href:'Kategorije.dc.html?kat=c#kategorije-tabs', icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/ce-kategorija-icon.png', desc:'Kandidat može da se upiše sa 20 godina i završi celokupnu obuku, a praktični ispit polaže sa navršenom 21 godinom.' },
+      ]),
+      services: [
+        { tag:'', title:'Online upis', text:'Upiši se brzo i lako - bez čekanja i papirologije.', cta:'Upiši se', href:'Kategorije.dc.html#upis-forma', img:'https://autoskoladule.rs/wp-content/uploads/2023/01/Ova-slika-neka-stoji-isto-za-nesto-1024x683.jpg' },
+        { tag:'', title:'Online predavanja', text:'Omogućavamo ti da sva predavanja odslušaš i odgledaš od kuće, koliko god puta ti je potrebno.', cta:'Online predavanja', href:'Kategorije.dc.html#online-ucionica', img:'https://autoskoladule.rs/wp-content/uploads/2023/01/IMG_1848-1024x683.jpg' },
+        { tag:'', title:'Kondicioni časovi', text:'Imaš vozačku dozvolu, a ne voziš? Naš tim će ti pomoći da ponovo stekneš sigurnost za volanom.', cta:'Pročitaj više', href:'Kategorije.dc.html#kondicioni', img:'https://autoskoladule.rs/wp-content/uploads/2023/01/Slika-za-kondicione-casove-1024x683.jpg' },
+      ],
+      stats: [
+        { n:'2 lokacije', link:'Kontakt', href:'#kontakt', img:'https://autoskoladule.rs/wp-content/uploads/2023/07/IMG_5180-1-1024x683.jpg' },
+        { n:'8 kategorija', link:'Kategorije', href:'Kategorije.dc.html', img:'https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9487-01-1024x683.jpeg' },
+        { n:'2 predavača · 3 ispitivača', link:'Naš tim', href:'Na%C5%A1%20tim.dc.html', img:'https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9511-01-1024x683.jpeg' },
+        { n:'12 vozila', link:'Vozni park', href:'Vozila.dc.html', img:'https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9591-01-1024x683.jpeg' },
+      ],
+      topics: [
+        { n:1, label:'Odgovornost vozača' },
+        { n:2, label:'Vozilo i tehnički uslovi' },
+        { n:3, label:'Saobraćajni znakovi i uređaji' },
+        { n:4, label:'Pravila saobraćaja' },
+        { n:5, label:'Vožnja u opasnom stanju' },
+        { n:6, label:'Slučaj nesreće' },
+      ],
+      partners: [
+        'https://autoskoladule.rs/wp-content/uploads/2020/12/udrzenje-bajkera-krusevac-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/motocros-club-globare-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/lion-taxi-logo-1-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/moto-centar-gajic-150x150.png',
+      ],
+      locations: [
+        { city:'Kruševac', addr:'Slobodana Jovanovića 6, Kruševac', hours:'pon–pet: 09–17h · subota: 09–14h' },
+        { city:'Varvarin', addr:'Slobode 94, Varvarin', hours:'pon–pet: 08–15h · subota: ne radimo' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

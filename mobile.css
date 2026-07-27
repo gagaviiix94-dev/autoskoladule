@@ -1,0 +1,113 @@
+/* Mobilna optimizacija + hamburger meni - deljeno za sve strane */
+.dule-mnav-cb{position:absolute;width:0;height:0;opacity:0;pointer-events:none}
+.dule-burger{display:none;flex-shrink:0;margin-left:auto;width:46px;height:46px;border:1px solid var(--line,#e6e4e0);border-radius:11px;background:#fff;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.dule-burger-bar{display:block;width:20px;height:2px;background:var(--ink,#161719);transition:transform .28s cubic-bezier(.22,.68,.35,1),opacity .2s}
+.dule-mnav-cb:checked ~ .dule-burger .dule-burger-bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.dule-mnav-cb:checked ~ .dule-burger .dule-burger-bar:nth-child(2){opacity:0}
+.dule-mnav-cb:checked ~ .dule-burger .dule-burger-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.dule-drawer{display:none}
+
+/* --- tablet (do 1180px): jedna kolona za široke gridove, manji naslovi --- */
+@media (max-width:1180px){
+  .dule-page h1{white-space:normal!important;font-size:clamp(38px,5.4vw,62px)!important}
+  .dule-page [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+  .dule-page [style*="grid-template-columns"] > *{min-width:0}
+  .dule-page [style*="max-width: 400px"],
+  .dule-page [style*="max-width:400px"]{max-width:100%!important;margin-left:0!important}
+  .dule-page footer [style*="grid-template-columns"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dule-page [style*="gap: 64px"],.dule-page [style*="gap:64px"],
+  .dule-page [style*="gap: 56px"],.dule-page [style*="gap:56px"]{gap:34px!important}
+}
+@media (max-width:1180px) and (min-width:901px){
+  .dule-page > header + section [style*="padding: 92px"]{padding-top:64px!important;padding-bottom:72px!important}
+  .dule-page [style*="repeat(4"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dule-page [style*="repeat(3"],
+  .dule-page [style*="repeat(2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  /* parking scena: 440px koordinatni sistem staje bez skaliranja na ovoj širini */
+}
+
+/* --- glatko skrolovanje prstom bilo gde na ekranu --- */
+@media (max-width:1040px){
+  html{-webkit-text-size-adjust:100%}
+  html,body{-webkit-overflow-scrolling:touch;touch-action:pan-y}
+  /* sekcije sa overflow:hidden ne smeju da progutaju vertikalni prevlak */
+  .dule-page,.dule-page section,.dule-page section *{touch-action:auto!important;overscroll-behavior:auto}
+  .dule-page section{overflow:clip!important}
+  /* overflow-x:hidden na precima ruši position:sticky - clip ne pravi scroll kontejner */
+  .dule-page header{position:sticky!important;top:0!important;z-index:60}
+  /* slike, platna i animacije ne hvataju prevlačenje */
+  .dule-page img,.dule-page canvas,.dule-page svg,.dule-page video,.dule-page lottie-player,.dule-page dotlottie-player,.dule-lot,.dule-lot *{-webkit-user-drag:none;user-select:none;pointer-events:none}
+  /* interaktivni elementi zadržavaju dodir */
+  .dule-page a,.dule-page button,.dule-page label,.dule-page input,.dule-page select,.dule-page textarea,.dule-page iframe,.dule-page a *,.dule-page button *{pointer-events:auto}
+  .dule-page a,.dule-page button,.dule-page label{-webkit-tap-highlight-color:transparent}
+  /* horizontalne trake unutar sekcija ne blokiraju vertikalni skrol */
+  .dule-page [style*="overflow-x: auto"],.dule-page [style*="overflow-x:auto"],
+  .dule-page [style*="overflow-x: scroll"],.dule-page [style*="overflow-x:scroll"]{touch-action:pan-x pan-y!important}
+}
+
+/* --- mobilni + tablet nav (do 1040px) --- */
+@media (max-width:1040px){
+  .dule-nav-desktop{display:none!important}
+  .dule-top-cta{display:none!important}
+  .dule-burger{display:flex}
+  .dule-page header img{height:46px!important}
+  .dule-drawer{display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;padding:10px 16px 18px;background:#fff;border-bottom:1px solid var(--line,#e6e4e0);box-shadow:0 26px 40px -24px rgba(0,0,0,.35);font-family:Oswald,sans-serif;font-weight:500;font-size:16px;letter-spacing:.04em;text-transform:uppercase;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .35s cubic-bezier(.22,.68,.35,1),opacity .25s,visibility .25s}
+  .dule-mnav-cb:checked ~ .dule-drawer{max-height:80vh;opacity:1;visibility:visible}
+  .dule-drawer a{padding:14px 4px;border-bottom:1px solid var(--line,#e6e4e0)}
+  .dule-drawer a:last-child{border-bottom:0}
+  .dule-drawer .dule-drawer-cta{margin-top:14px;background:var(--accent,#e11221);color:#fff;text-align:center;border-radius:10px;padding:15px;font-weight:600}
+}
+.dule-nav-desktop a{white-space:nowrap}
+br.dule-br-m{display:none}
+
+@media (max-width:900px){
+  html,body{overflow-x:clip}
+  .dule-page{overflow-x:clip}
+  .dule-page header img{height:42px!important}
+  .dule-page header > div{padding-top:11px!important;padding-bottom:11px!important;gap:14px!important}
+
+  /* layout */
+  .dule-page [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+  .dule-page footer [style*="grid-template-columns"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dule-page [style*="max-width: 1240px"],
+  .dule-page [style*="max-width:1240px"]{padding-left:16px!important;padding-right:16px!important}
+  .dule-page > section{padding-top:54px!important;padding-bottom:54px!important}
+  .dule-page [style*="padding: 52px"],.dule-page [style*="padding:52px"],
+  .dule-page [style*="padding: 48px"],.dule-page [style*="padding:48px"],
+  .dule-page [style*="padding: 46px"],.dule-page [style*="padding:46px"],
+  .dule-page [style*="padding: 44px"],.dule-page [style*="padding:44px"],
+  .dule-page [style*="padding: 40px"],.dule-page [style*="padding:40px"],
+  .dule-page [style*="padding: 38px"],.dule-page [style*="padding:38px"],
+  .dule-page [style*="padding: 36px"],.dule-page [style*="padding:36px"],
+  .dule-page [style*="padding: 34px"],.dule-page [style*="padding:34px"],
+  .dule-page [style*="padding: 32px"],.dule-page [style*="padding:32px"],
+  .dule-page [style*="padding: 28px"],.dule-page [style*="padding:28px"]{padding:22px 18px!important}
+  .dule-page [style*="gap: 46px"],.dule-page [style*="gap:46px"],
+  .dule-page [style*="gap: 44px"],.dule-page [style*="gap:44px"]{gap:26px!important}
+
+  /* tipografija */
+  .dule-page h1{font-size:clamp(30px,8.6vw,42px)!important}
+  .dule-page h2{font-size:clamp(23px,6.4vw,31px)!important}
+  .dule-page h3{font-size:21px!important}
+  .dule-page p{font-size:15.5px!important}
+
+  /* medija i fiksne veličine */
+  .dule-page [style*="width: 158px"],.dule-page [style*="width:158px"]{width:calc(50% - 6px)!important;height:100px!important}
+  .dule-page [style*="width: 150px; height: 150px"],.dule-page [style*="width:150px;height:150px"]{width:calc(50% - 13px)!important;height:auto!important;aspect-ratio:1/1}
+  .dule-page iframe{min-height:300px!important}
+  /* parking: zadrži punu 440px scenu (deca su apsolutno pozicionirana u px) i skaliraj je jednom */
+  .dule-lot{width:440px!important;max-width:none!important;flex:none!important;transform:scale(.7);transform-origin:top left;margin-right:-132px!important;margin-bottom:-168px}
+}
+@media (max-width:900px){
+  .dule-page .dule-hours-cap{text-align:left!important;right:16px!important;left:16px!important}
+  .dule-page .dule-hours-cap br.dule-br-m{display:inline}
+  .dule-page .dule-hours-cap > div:last-child{font-size:9px!important;white-space:normal!important}
+  .dule-page .dule-service-text{font-size:12px!important;line-height:1.4!important}
+  .dule-page .dule-hours-cap > div:last-child br.dule-br-m + *{display:inline}
+}
+@media (max-width:480px){
+  .dule-page footer [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+  .dule-page .dule-hero-cta{flex-wrap:nowrap!important;gap:8px!important}
+  .dule-page .dule-hero-cta > a{flex:1 1 0;min-width:0;padding-left:14px!important;padding-right:14px!important;font-size:12.5px!important;white-space:nowrap;justify-content:center;text-align:center}
+  .dule-lot{transform:scale(.62);transform-origin:top left;margin-right:-167px!important;margin-bottom:-212px}
+}

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./mobile.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f6f5f2}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:var(--accent,#e11221)}
+  ::selection{background:#e11221;color:#fff}
+  .dule-btn{transition:transform .35s cubic-bezier(.22,.68,.35,1),box-shadow .35s cubic-bezier(.22,.68,.35,1),background .25s,color .25s,border-color .25s}
+  .dule-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 38px -18px rgba(0,0,0,.35),0 0 30px -8px rgba(225,18,33,.45)}
+  @media (prefers-reduced-motion:reduce){.dule-btn:hover{transform:none}}
+  .dule-reveal{opacity:0;transform:translateY(30px);transition:opacity .75s cubic-bezier(.22,.68,.35,1),transform .75s cubic-bezier(.22,.68,.35,1)}
+  .dule-reveal.dule-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.dule-reveal{opacity:1;transform:none;transition:none}}
+  .dule-link{position:relative;display:inline-block}
+  .dule-link::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--accent,#e11221);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,.68,.35,1)}
+  .dule-link:hover::after{transform:scaleX(1)}
+  .dule-bar-links a:hover{color:#fff!important;border-bottom-color:#fff!important}
+  @keyframes dule-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .dule-marquee-track{display:flex;width:max-content;animation:dule-marquee 26s linear infinite}
+  @keyframes dule-rise{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise2{0%,16%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise3{0%,28%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  @keyframes dule-rise4{0%,40%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+  html[data-preloading] *{animation-play-state:paused!important}
+</style>
+<script src="./preloader.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" class="dule-page" style="--accent:#e11221;--accent-dark:#a50d18;--ink:#161719;--muted:#6b6d72;--line:#e6e4e0;--bg:#ffffff;--soft:#f2f0ec;--dark:#141518;font-family:Barlow,system-ui,sans-serif;color:#161719;background:#f6f5f2">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 24px 14px 12px;display:flex;align-items:center;gap:28px">
+      <a href="Auto%20%C5%A1kola%20Dule.dc.html" style="flex-shrink:0"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:54px;display:block"></a>
+      <nav class="dule-nav-desktop" style="margin-left:auto;display:flex;align-items:center;gap:4px;font-family:Oswald;font-weight:500;font-size:15px;letter-spacing:.04em;text-transform:uppercase">
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html" class="dule-link" style="padding:10px 13px">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html" class="dule-link" style="padding:10px 13px">Naš tim</a>
+        <a href="Kategorije.dc.html" class="dule-link" style="padding:10px 13px;color:var(--accent)">Kategorije</a>
+        <a href="Cenovnik.dc.html" class="dule-link" style="padding:10px 13px">Cenovnik</a>
+        <a href="Vozila.dc.html" class="dule-link" style="padding:10px 13px">Vozila</a>
+        <a href="O%20nama.dc.html" class="dule-link" style="padding:10px 13px">O nama</a>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html#kontakt" class="dule-link" style="padding:10px 13px">Kontakt</a>
+      </nav>
+      <a href="#upis-forma" class="dule-btn dule-top-cta" style="flex-shrink:0;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;padding:12px 20px;border-radius:9px" style-hover="{{ ctaHover }}">Online upis</a>
+      <input id="dule-mnav" type="checkbox" class="dule-mnav-cb" aria-label="Meni">
+      <label for="dule-mnav" class="dule-burger" aria-label="Otvori meni"><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span><span class="dule-burger-bar"></span></label>
+      <nav class="dule-drawer">
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html">Početna</a>
+        <a href="Na%C5%A1%20tim.dc.html">Naš tim</a>
+        <a href="Kategorije.dc.html">Kategorije</a>
+        <a href="Cenovnik.dc.html">Cenovnik</a>
+        <a href="Vozila.dc.html">Vozila</a>
+        <a href="O%20nama.dc.html">O nama</a>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html#kontakt">Kontakt</a>
+        <a class="dule-drawer-cta" href="#upis-forma">Online upis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section style="position:relative;background:var(--dark);color:#fff;overflow:hidden;height:clamp(520px,42vw,760px);box-sizing:border-box;display:flex;flex-direction:column">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,21,24,.94),rgba(20,21,24,1))"></div>
+      <div style="position:absolute;top:-340px;left:26%;transform:translateX(-50%);width:720px;height:720px;border-radius:50%;background:rgba(225,18,33,.3);filter:blur(150px)"></div>
+      <div style="position:absolute;bottom:-300px;right:-160px;width:640px;height:640px;border-radius:50%;background:rgba(249,115,22,.16);filter:blur(160px)"></div>
+      <div style="position:absolute;inset:0;opacity:.07;background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:72px 72px"></div>
+    </div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center">
+      <div style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:999px;font-family:Oswald;letter-spacing:.2em;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:20px;animation:dule-rise 1.05s cubic-bezier(.22,.68,.35,1) forwards"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>obuka za sve kategorije</div>
+      <h1 style="font-family:Oswald;font-weight:700;font-size:62px;line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;animation:dule-rise2 1.15s cubic-bezier(.22,.68,.35,1) forwards">Kategorije</h1>
+      <p style="font-size:18px;line-height:1.6;color:#d7d6d3;max-width:560px;margin-top:32px;animation:dule-rise3 1.25s cubic-bezier(.22,.68,.35,1) forwards">Bilo da želiš motocikl, automobil ili teretno vozilo - kod nas biraš instruktora, vozilo i termin obuke koji tebi odgovara.</p>
+    </div>
+    <div style="position:relative;background:var(--accent);color:#fff;font-family:Oswald;letter-spacing:.05em;text-transform:uppercase;font-size:14px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding:14px 24px">
+      <span>AM · A1 · A2 · A</span><span>B · BE</span><span>C · CE</span><span>online upis</span><span>online predavanja</span><span>kondicioni časovi</span>
+    </div>
+  </section>
+
+  <!-- CATEGORY DETAIL BLOCKS -->
+  <section id="kategorije-tabs" style="max-width:1240px;margin:0 auto;padding:70px 24px 30px;scroll-margin-top:80px">
+    <!-- TABS -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:40px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.onClick }}" class="dule-btn" style="{{ t.style }}">{{ t.label }} <span style="opacity:.6;font-size:13px">{{ t.subs }}</span></button>
+      </sc-for>
+    </div>
+
+    <!-- ACTIVE CATEGORY -->
+    <div style="display:grid;grid-template-columns:.92fr 1.08fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden">
+      <div style="position:relative;min-height:520px">
+        <img src="{{ active.img }}" alt="{{ active.label }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ active.pos }}">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,16,18,.2),rgba(15,16,18,.72))"></div>
+        <div style="position:absolute;top:26px;left:26px;display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ active.badges }}" as="b" hint-placeholder-count="3">
+            <span style="font-family:Oswald;font-weight:600;letter-spacing:.06em;font-size:13px;color:#fff;background:var(--accent);border-radius:7px;padding:6px 12px">{{ b }}</span>
+          </sc-for>
+        </div>
+        <div style="position:absolute;bottom:26px;left:26px;right:26px;color:#fff">
+          <div style="width:60px;height:60px;border-radius:14px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><img src="{{ active.icon }}" alt="" style="width:38px;height:38px;object-fit:contain"></div>
+          <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:40px;line-height:1">{{ active.label }}</h2>
+          <p style="font-size:15.5px;line-height:1.55;color:#e4e3e0;margin-top:10px;max-width:420px">{{ active.intro }}</p>
+        </div>
+      </div>
+
+      <div style="padding:42px 44px">
+        <!-- USLOVI -->
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--accent);margin-bottom:14px">Uslovi za upis</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <sc-for list="{{ active.uslovi }}" as="u" hint-placeholder-count="2">
+            <div style="display:flex;gap:11px;font-size:15.5px;line-height:1.45"><span style="color:var(--accent);font-weight:700;flex-shrink:0">✓</span>{{ u }}</div>
+          </sc-for>
+        </div>
+
+        <!-- TRAJANJE -->
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--accent);margin-bottom:14px">Trajanje obuke</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <sc-for list="{{ active.trajanje }}" as="v" hint-placeholder-count="2">
+            <div style="background:var(--soft);border-radius:12px;padding:16px 18px">
+              <div style="font-family:Oswald;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:14.5px;margin-bottom:10px">{{ v.t }}</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <sc-for list="{{ v.items }}" as="i" hint-placeholder-count="3">
+                  <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink);line-height:1.35"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px"></span>{{ i }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- NOTE -->
+        <sc-if value="{{ active.note }}" hint-placeholder-val="x">
+          <div style="margin-top:22px;border-left:3px solid var(--accent);background:var(--soft);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;line-height:1.55;color:var(--muted)"><strong style="color:var(--ink)">Napomena: </strong>{{ active.note }}</div>
+        </sc-if>
+
+        <sc-if value="{{ active.vehicle }}" hint-placeholder-val="x">
+          <div style="margin-top:14px;font-size:13.5px;line-height:1.55;color:var(--muted)"><strong style="color:var(--ink)">Vozila: </strong>{{ active.vehicle }}</div>
+        </sc-if>
+
+        <a href="#upis-forma" class="dule-btn" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--accent);color:#fff;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:14px;font-weight:600;padding:14px 24px;border-radius:9px" style-hover="{{ ctaHover }}">Upiši se online <span style="display:inline-flex;align-items:center;line-height:1;transform:translateY(-2px)">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONDICIONI ČASOVI -->
+  <section id="kondicioni" style="max-width:1240px;margin:0 auto;padding:50px 24px 10px;scroll-margin-top:80px">
+    <div style="background:var(--dark);color:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr">
+      <div style="padding:52px 50px;display:flex;flex-direction:column;justify-content:center">
+        <div style="display:inline-flex;align-items:center;gap:10px;font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>za vozače sa dozvolom</div>
+        <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.06">Kondicioni časovi vožnje</h2>
+        <p style="font-size:16px;line-height:1.66;color:#d3d2cf;margin-top:18px">Imaš vozačku dozvolu, a ne voziš? Kondicioni časovi služe da se oslobodiš straha, podigneš samopouzdanje i naučiš da bezbedno upravljaš vozilom u realnim uslovima.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px">
+          <sc-for list="{{ kondBenefits }}" as="k" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:14px 16px;font-size:14.5px;font-weight:500"><span style="color:var(--accent);font-weight:700">✓</span>{{ k }}</div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px">
+          <a href="tel:0606037037" class="dule-btn" style="background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:15px 26px;border-radius:10px" style-hover="{{ ctaHover }}">☏ Zakaži prvi čas - 060 6 037 037</a>
+          <span style="font-size:13.5px;color:#b9b8b5">Sa sobom poneti ličnu kartu i vozačku dozvolu</span>
+        </div>
+      </div>
+      <div style="position:relative;min-height:360px">
+        <img src="https://autoskoladule.rs/wp-content/uploads/2023/01/Slika-za-kondicione-casove-1024x683.jpg" alt="Kondicioni časovi vožnje" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,24,.6),rgba(20,21,24,.1))"></div>
+        <div class="dule-hours-cap" style="position:absolute;bottom:28px;right:28px;left:28px;text-align:right">
+          <div style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)">Broj časova je individualan</div>
+          <div style="font-size:14px;color:#e4e3e0;text-shadow:0 2px 10px rgba(0,0,0,.5);margin-top:4px"><span class="dule-hc-l1">Instruktor procenjuje</span><br class="dule-br-m"> <span class="dule-hc-l2">kada si spreman za bezbednu vožnju.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCES -->
+  <section id="proces" style="max-width:1240px;margin:0 auto;padding:60px 24px;scroll-margin-top:90px">
+    <div style="text-align:center;margin-bottom:46px">
+      <div style="font-family:Oswald;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:12px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>kako izgleda obuka</div>
+      <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:36px;letter-spacing:-.01em">Od upisa do vozačke</h2>
+    </div>
+    <div ref="{{ stepsRef }}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px">
+          <div style="font-family:Oswald;font-weight:700;font-size:40px;color:var(--accent);line-height:1">0{{ s.n }}</div>
+          <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.03em;font-size:18px;margin-top:12px">{{ s.title }}</div>
+          <p style="font-size:14.5px;line-height:1.55;color:var(--muted);margin-top:8px">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ONLINE UPIS FORM -->
+  <section id="upis-forma" style="max-width:1240px;margin:0 auto;padding:50px 24px;scroll-margin-top:80px">
+    <div style="background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:.82fr 1.18fr">
+      <div style="position:relative;padding:48px 44px;background:var(--dark);color:#fff;display:flex;flex-direction:column;justify-content:center;overflow:hidden">
+        <img src="https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9487-01-1024x683.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18">
+        <div style="position:relative">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>online upis</div>
+          <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.06">Prijavi se za<br>nekoliko minuta</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#d3d2cf;margin-top:16px">Popuni podatke i naš tim će te kontaktirati radi izbora instruktora, vozila i termina obuke.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:28px">
+            <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700">☏</span><a href="tel:0606037037" style="font-weight:600">060 6 037 037</a></div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700">✉</span><a href="mailto:autoskoladule@gmail.com">autoskoladule@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:44px 46px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="height:100%;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+            <div style="width:74px;height:74px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:34px;font-weight:700;margin-bottom:20px">✓</div>
+            <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:26px">Prijava poslata!</h3>
+            <p style="font-size:15.5px;color:var(--muted);margin-top:10px;max-width:360px">Hvala, {{ formName }}. Kontaktiraćemo te u najkraćem roku na ostavljeni broj telefona.</p>
+            <button onClick="{{ resetForm }}" class="dule-btn" style="margin-top:24px;background:none;border:1px solid var(--line);border-radius:9px;padding:12px 22px;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink)">Nova prijava</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Ime i prezime</label>
+              <input value="{{ formName }}" onInput="{{ onName }}" placeholder="Petar Petrović" style="{{ inputStyle }}">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Telefon</label>
+              <input value="{{ formPhone }}" onInput="{{ onPhone }}" placeholder="06x xxx xxxx" style="{{ inputStyle }}">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Kategorija</label>
+              <select value="{{ formCat }}" onChange="{{ onCat }}" style="{{ inputStyle }}">
+                <option value="A">A kategorija</option>
+                <option value="B">B kategorija</option>
+                <option value="BE">BE kategorija</option>
+                <option value="C">C kategorija</option>
+                <option value="CE">CE kategorija</option>
+                <option value="Kondicioni">Kondicioni časovi</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Lokacija</label>
+              <select value="{{ formLoc }}" onChange="{{ onLoc }}" style="{{ inputStyle }}">
+                <option value="Kruševac">Kruševac</option>
+                <option value="Varvarin">Varvarin</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Poruka (opciono)</label>
+              <textarea value="{{ formMsg }}" onInput="{{ onMsg }}" placeholder="Pitanje ili željeni termin…" rows="3" style="{{ textareaStyle }}"></textarea>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;justify-content:flex-end">
+              <div style="display:flex;align-items:center;gap:11px;background:var(--soft);border:1px dashed var(--line);border-radius:10px;padding:13px 15px;font-family:Oswald;font-weight:600;font-size:20px;letter-spacing:.05em;color:var(--ink);user-select:none"><span style="color:var(--accent)">{{ capA }}</span> + <span style="color:var(--accent)">{{ capB }}</span> = ?</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--muted)">Provera - koliko je {{ capA }} + {{ capB }}?</label>
+              <input value="{{ capAns }}" onInput="{{ onCap }}" inputmode="numeric" placeholder="Rezultat" style="{{ inputStyle }}">
+            </div>
+            <div style="grid-column:1 / -1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px">
+              <button onClick="{{ submitForm }}" class="dule-btn" style="background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer" style-hover="{{ ctaHover }}">Pošalji prijavu →</button>
+              <sc-if value="{{ err }}" hint-placeholder-val="">
+                <span style="color:var(--accent);font-size:13.5px;font-weight:600">{{ err }}</span>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONLINE UČIONICA -->
+  <section id="online-ucionica" style="max-width:1240px;margin:0 auto;padding:50px 24px;scroll-margin-top:80px">
+    <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:22px;padding:44px 46px">
+        <div style="display:inline-flex;align-items:center;gap:10px;font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:16px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>online predavanja</div>
+        <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.06">Online učionica</h2>
+        <p style="font-size:15.5px;line-height:1.66;color:var(--muted);margin-top:16px">Ovo je prva auto škola u okrugu koja je napravila online učionicu - internet platformu na kojoj slušaš sva predavanja potrebna za polaganje testova. Časovi teorijske obuke su obavezni, a učionica služi da gradivo ponoviš neograničen broj puta, svojom brzinom i bez stresa.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+          <sc-for list="{{ ucFeatures }}" as="uf" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:9px;background:var(--soft);border-radius:10px;padding:10px 14px;font-size:14px;font-weight:500"><span style="color:var(--accent);font-weight:700">✓</span>{{ uf }}</div>
+          </sc-for>
+        </div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--accent);margin:30px 0 14px">Video nastavne jedinice</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 26px">
+          <sc-for list="{{ lessons }}" as="ls" hint-placeholder-count="10">
+            <div style="display:flex;gap:11px;font-size:14.5px;line-height:1.4;align-items:baseline"><span style="font-family:Oswald;font-weight:700;color:var(--accent);font-size:13px;min-width:22px">{{ ls.n }}</span>{{ ls.t }}</div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:var(--dark);color:#fff;border-radius:22px;padding:42px 40px">
+        <sc-if value="{{ ucSent }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+            <div style="width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:34px;font-weight:700;margin-bottom:20px">✓</div>
+            <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:24px">Zahtev poslat!</h3>
+            <p style="font-size:15px;color:#cfcecb;margin-top:10px;max-width:320px">Odobrićemo ti pristup online učionici i javiti se na {{ ucEmail }}.</p>
+            <button onClick="{{ ucReset }}" class="dule-btn" style="margin-top:24px;background:none;border:1px solid rgba(255,255,255,.25);border-radius:9px;padding:12px 22px;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:13.5px;font-weight:600;cursor:pointer;color:#fff">Novi zahtev</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ucNotSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-family:Oswald;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-size:12.5px;margin-bottom:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>pristup učionici</div>
+          <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:24px;line-height:1.1;margin-bottom:6px">Prijavi se za e-učionicu</h3>
+          <p style="font-size:14px;color:#c9c8c5;margin-bottom:22px">Popuni formu kako bismo ti odobrili pristup online predavanjima.</p>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#a9a8a5">Ime i prezime</label>
+              <input value="{{ ucName }}" onInput="{{ onUcName }}" placeholder="Petar Petrović" style="{{ ucInputStyle }}">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#a9a8a5">Email adresa</label>
+              <input value="{{ ucEmail }}" onInput="{{ onUcEmail }}" placeholder="ime@email.com" style="{{ ucInputStyle }}">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label style="font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#a9a8a5">ID broj kandidata</label>
+              <input value="{{ ucId }}" onInput="{{ onUcId }}" placeholder="npr. 2024-0123" style="{{ ucInputStyle }}">
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px">
+              <button onClick="{{ ucSubmit }}" class="dule-btn" style="background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:14px 28px;border:none;border-radius:10px;cursor:pointer" style-hover="{{ ctaHover }}">Zatraži pristup →</button>
+              <sc-if value="{{ ucErr }}" hint-placeholder-val="">
+                <span style="color:var(--accent);font-size:13.5px;font-weight:600">{{ ucErr }}</span>
+              </sc-if>
+            </div>
+            <div style="font-size:12.5px;color:#8f8e8b;line-height:1.5">E-učionica je dostupna 24h dnevno. Časovi teorijske obuke su obavezni.</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1240px;margin:0 auto;padding:30px 24px 80px">
+    <div style="position:relative;border-radius:20px;overflow:hidden;color:#fff">
+      <img src="https://autoskoladule.rs/wp-content/uploads/2023/10/IMG_9591-01-1024x683.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,21,24,.94),rgba(20,21,24,.55))"></div>
+      <div style="position:relative;padding:58px 52px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+        <div>
+          <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1.08">Nisi siguran koja kategorija?</h2>
+          <p style="font-size:16px;color:#d7d6d3;margin-top:12px;max-width:520px">Pozovi nas ili svrati - savetovaćemo te koja obuka ti najviše odgovara.</p>
+        </div>
+        <a href="tel:0606037037" class="dule-btn" style="flex-shrink:0;background:var(--accent);color:#fff;font-family:Oswald;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:16px 30px;border-radius:10px" style-hover="{{ ctaHover }}">☏ 060 6 037 037</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERI -->
+  <section id="galerija" style="max-width:1240px;margin:0 auto;padding:20px 24px 60px;text-align:center">
+    <div style="font-family:Oswald;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-size:13px;margin-bottom:10px;display:inline-flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>prijatelji auto škole</div>
+    <h2 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:30px;margin-bottom:36px">NAŠI PARTNERI</h2>
+    <div style="display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap">
+      <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;width:150px;height:150px;display:flex;align-items:center;justify-content:center;padding:22px" style-hover="{{ cardHover }}"><img src="{{ p }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain"></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:var(--dark);color:#cfcecb">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px">
+      <div>
+        <a href="Auto%20%C5%A1kola%20Dule.dc.html" style="display:inline-block"><img src="https://autoskoladule.rs/wp-content/uploads/2025/10/auto-skola-dule-logo.png" alt="Auto škola Dule" style="height:60px;background:#fff;padding:10px 14px;border-radius:10px;display:block"></a>
+        <p style="font-size:14.5px;line-height:1.6;margin-top:20px;max-width:300px">Vozi sigurno, uči sa najboljima. Obuka za sve kategorije uz izbor instruktora, vozila i termina.</p>
+        <div style="display:flex;gap:10px;margin-top:20px">
+          <a href="https://www.facebook.com/dule.autoskola/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a>
+          <a href="https://www.instagram.com/autoskoladule/" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://www.youtube.com/channel/UC92BBUXjT8KW2FbSgrHSTdQ" style="width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center" style-hover="{{ socHover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.42A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77c1.53.43 8.83.43 8.83.43s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Kruševac</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobodana Jovanovića 6<br>060 6 037 037<br>pon–pet: 09–17h<br>subota: 09–14h</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Varvarin</div>
+        <div style="font-size:14.5px;line-height:1.8">Slobode 94<br>060 6 037 037<br>pon–pet: 08–15h<br>subota: ne radimo</div>
+      </div>
+      <div>
+        <div style="font-family:Oswald;text-transform:uppercase;letter-spacing:.08em;color:#fff;font-size:15px;margin-bottom:16px">Prijatelji sajta</div>
+        <div style="font-size:14.5px;line-height:2;display:flex;flex-direction:column">
+          <a href="http://www.mcg.rs/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Moto centar Gajić</a>
+          <a href="https://www.instagram.com/nezavisno_udruzenje_bajkera/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Udruženje bajkera</a>
+          <a href="https://www.facebook.com/Motocross-club-Gajic-1584827075112432/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Motocross club Gajić</a>
+          <a href="https://www.facebook.com/liontaxi.ks/" class="dule-link" style="align-self:flex-start" style-hover="{{ linkHover }}">Lion Taxi</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1)"><div style="max-width:1240px;margin:0 auto;padding:22px 24px;font-size:13px;color:#8b8a87;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><span>Auto škola Dule Kruševac 2026 · Sva prava zadržana</span><span>2 lokacije · 8 kategorija · 12 vozila</span></div></div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e11221&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e11221&quot;,&quot;#c8102e&quot;,&quot;#d1232a&quot;,&quot;#1a1a1a&quot;]}}">
+class Component extends DCLogic {
+  state = { tab: (function(){ const m = /[?&]kat=([abc])/i.exec(window.location.search || ''); return m ? { a:0, b:1, c:2 }[m[1].toLowerCase()] : 0; })(), name:'', phone:'', cat:'B', loc:'Kruševac', msg:'', err:'', sent:false,
+    capA: Math.floor(Math.random()*8)+2, capB: Math.floor(Math.random()*8)+2, capAns:'',
+    ucName:'', ucEmail:'', ucId:'', ucErr:'', ucSent:false };
+  rootRef = React.createRef();
+  stepsRef = React.createRef();
+  initStepsFade(){ this.whenRef(this.stepsRef, (el) => this.fadeCards(el, 140)); }
+  whenRef(ref, cb){
+    let n = 0;
+    const tick = () => {
+      if (ref.current) return cb(ref.current);
+      if (++n < 40) setTimeout(tick, 120);
+    };
+    tick();
+  }
+  onVisible(el, cb){
+    let done = false;
+    const inView = () => { const r = el.getBoundingClientRect(); return r.top < (window.innerHeight || 0) * 0.9 && r.bottom > 40; };
+    const poll = () => {
+      if (done) return;
+      if (inView()) { done = true; cb(); return; }
+      setTimeout(poll, 200);
+    };
+    setTimeout(poll, 700);
+  }
+  fadeCards(grid, gap){
+    if (!grid) return;
+    if (!grid.children.length) { setTimeout(() => this.fadeCards(grid, gap), 120); return; }
+    const cards = Array.from(grid.children);
+    cards.forEach((c) => {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(26px)';
+      c.style.transition = 'opacity .8s cubic-bezier(.22,.68,.35,1), transform .8s cubic-bezier(.22,.68,.35,1)';
+    });
+    this.onVisible(grid, () => {
+      cards.forEach((c, i) => setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'none'; }, 1000 + i * gap));
+    });
+  }
+  componentDidMount(){
+    const a = this.props.accentColor;
+    if (a && this.rootRef.current) this.rootRef.current.style.setProperty('--accent', a);
+    this.initReveal();
+    this.initStepsFade();
+    const hash = (window.location.hash || '').replace('#','');
+    if (hash){
+      let tries = 0;
+      const jump = () => {
+        const el = document.getElementById(hash);
+        if (el){ window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' }); }
+        else if (tries++ < 40){ requestAnimationFrame(jump); }
+      };
+      requestAnimationFrame(jump);
+    }
+  }
+  componentDidUpdate(prev){
+    if (prev.accentColor !== this.props.accentColor && this.rootRef.current)
+      this.rootRef.current.style.setProperty('--accent', this.props.accentColor || '#e11221');
+  }
+  ucSubmit(){
+    const s = this.state;
+    if(!s.ucName || !s.ucEmail || !s.ucId){ this.setState({ ucErr:'Popuni sva polja.' }); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.ucEmail)){ this.setState({ ucErr:'Unesi ispravnu email adresu.' }); return; }
+    this.setState({ ucErr:'', ucSent:true });
+  }
+  submit(){
+    if(!this.state.name || !this.state.phone){ this.setState({ err:'Unesi ime i broj telefona.' }); return; }
+    if(Number(this.state.capAns) !== this.state.capA + this.state.capB){
+      this.setState({ err:'Netačan rezultat sabiranja. Pokušaj ponovo.', capAns:'',
+        capA: Math.floor(Math.random()*8)+2, capB: Math.floor(Math.random()*8)+2 });
+      return;
+    }
+    this.setState({ err:'', sent:true });
+  }
+  setTab(i){
+    this.setState({ tab: i });
+    const el = document.getElementById('kategorije-tabs');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' });
+  }
+  initReveal(){
+    const root = this.rootRef.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll(':scope > section, :scope > footer')).slice(1);
+    if (!targets.length) return;
+    targets.forEach(el => el.classList.add('dule-reveal'));
+    const check = () => {
+      const h = window.innerHeight || 800;
+      let left = 0;
+      targets.forEach(el => {
+        if (el.classList.contains('dule-in')) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.92) el.classList.add('dule-in'); else left++;
+      });
+      if (!left && this.stopReveal) this.stopReveal();
+    };
+    this.onRevealScroll = () => { check(); };
+    this.stopReveal = () => {
+      window.removeEventListener('scroll', this.onRevealScroll);
+      window.removeEventListener('resize', this.onRevealScroll);
+      if (this.revealIO) this.revealIO.disconnect();
+    };
+    if ('IntersectionObserver' in window){
+      this.revealIO = new IntersectionObserver((entries, io) => {
+        entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('dule-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach(el => this.revealIO.observe(el));
+    }
+    window.addEventListener('scroll', this.onRevealScroll, { passive: true });
+    window.addEventListener('resize', this.onRevealScroll);
+    check();
+  }
+  componentWillUnmount(){ if (this.stopReveal) this.stopReveal(); }
+  renderVals(){
+    const acc = 'var(--accent,#e11221)';
+    const groups = [
+      { key:'a', label:'A kategorija', subs:'AM · A1 · A2 · A',
+        icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/a-kategorija-icon.png',
+        img:'https://autoskoladule.rs/wp-content/uploads/2020/12/01.jpg', pos:'50% 50%',
+        badges:['AM','A1','A2','A'],
+        intro:'Upravljanje motociklima i teškim triciklima čija je snaga motora veća od 15 KW.',
+        uslovi:['Upis sa 23 godine, praktični ispit sa 24','Ranije polaganje moguće uz A2 kategoriju stariju od 2 godine','Lekarsko uverenje'],
+        trajanje:[
+          { t:'Bez vozačke dozvole', items:['40 časova teorije + test','40 časova prakse + vožnja'] },
+          { t:'Ima B (nema AM)', items:['7 časova teorije + test','40 časova prakse + vožnja'] },
+          { t:'Ima AM kategoriju', items:['Test','20 časova prakse + vožnja'] },
+          { t:'Ima A1 kategoriju', items:['Test','14 časova prakse + vožnja'] },
+          { t:'Ima A2 kategoriju', items:['Test','7 časova prakse + vožnja'] },
+        ],
+        vehicle:'Obuka isključivo vozilom auto škole (min. 600 cm³, snaga min. 40 kW) - Suzuki Burgman 650. Škola obezbeđuje kacigu i bluetooth vezu.' },
+      { key:'b', label:'B kategorija', subs:'B · BE',
+        icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/b-kategorija-icon.png',
+        img:'https://autoskoladule.rs/wp-content/uploads/2020/12/obuka-auto-skola-dule.jpg', pos:'50% 50%',
+        badges:['B','BE'],
+        intro:'Moderna putnička vozila za praktičnu obuku i polaganje ispita, uz izbor instruktora, vozila i termina.',
+        uslovi:['Upis sa 16 godina, praktični ispit sa 17','Tokom trajanja obuke, obavezno sa sobom nositi ličnu kartu.'],
+        trajanje:[
+          { t:'B kategorija', items:['40 časova teorije + test','40 časova prakse + vožnja'] },
+          { t:'BE (prikolica 750–3500 kg)', items:['Min. 21 godina + B kategorija','7 časova obuke + praktični ispit'] },
+        ],
+        note:'Probna vozačka dozvola važi do navršene 21. godine (ili 2 godine ako se položi posle 19): zabrana vožnje 23–06h, bez telefona i alkohola, ograničenja brzine.',
+        vehicle:'Vozni park: VW Polo, VW Golf 5, Fiat 500.' },
+      { key:'c', label:'C kategorija', subs:'C · CE',
+        icon:'https://autoskoladule.rs/wp-content/uploads/2020/12/ce-kategorija-icon.png',
+        img:'https://autoskoladule.rs/wp-content/uploads/2020/12/01-header-za-c-kategoriju.jpg', pos:'12% 50%',
+        badges:['C','CE'],
+        intro:'Teretna vozila najveće dozvoljene mase preko 12.000 kg, dužine preko 8 m i sa zatvorenim tovarnim sandukom.',
+        uslovi:['Upis sa 20 godina, praktični ispit sa 21','Posedovanje B kategorije (ne sme biti probna)'],
+        trajanje:[
+          { t:'C kategorija', items:['7 časova teorije + test','15 časova prakse + vožnja'] },
+          { t:'CE (tegljač + prikolica)', items:['Posedovanje C kategorije','7 časova teorije + praktični ispit'] },
+        ] },
+    ];
+    const tab = this.state.tab;
+    const tabs = groups.map((g,i) => ({
+      label: g.label, subs: g.subs,
+      onClick: () => this.setTab(i),
+      style: 'cursor:pointer;font-family:Oswald;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:15px;padding:12px 22px;border-radius:10px;border:1px solid ' +
+        (i===tab ? 'transparent;background:'+acc+';color:#fff' : 'var(--line);background:#fff;color:var(--ink)') +
+        ';display:inline-flex;align-items:center;gap:8px;transition:.2s',
+    }));
+    return {
+      rootRef: this.rootRef,
+      stepsRef: this.stepsRef,
+      showBar: this.props.showBar ?? true,
+      ctaHover: { background:'var(--accent-dark,#a50d18)', transform:'translateY(-1px)' },
+      cardHover: { boxShadow:'0 24px 44px -24px rgba(0,0,0,.22)' },
+      socHover: { background: acc, borderColor: acc, color:'#fff' },
+      linkHover: { color:'#fff' },
+      barLinkHover: { color:'#fff', borderBottomColor:'#fff' },
+      tabs,
+      active: groups[tab],
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      err: this.state.err,
+      formName: this.state.name,
+      formPhone: this.state.phone,
+      formCat: this.state.cat,
+      formLoc: this.state.loc,
+      formMsg: this.state.msg,
+      onName: (e)=> this.setState({ name:e.target.value }),
+      onPhone: (e)=> this.setState({ phone:e.target.value }),
+      onCat: (e)=> this.setState({ cat:e.target.value }),
+      onLoc: (e)=> this.setState({ loc:e.target.value }),
+      onMsg: (e)=> this.setState({ msg:e.target.value }),
+      submitForm: ()=> this.submit(),
+      capA: this.state.capA,
+      capB: this.state.capB,
+      capAns: this.state.capAns,
+      onCap: (e)=> this.setState({ capAns:e.target.value }),
+      resetForm: ()=> this.setState({ name:'', phone:'', msg:'', err:'', sent:false }),
+      inputStyle: 'width:100%;font-family:Barlow;font-size:15px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:13px 15px;outline:none',
+      textareaStyle: 'width:100%;font-family:Barlow;font-size:15px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:13px 15px;outline:none;resize:vertical',
+      ucSent: this.state.ucSent,
+      ucNotSent: !this.state.ucSent,
+      ucErr: this.state.ucErr,
+      ucName: this.state.ucName,
+      ucEmail: this.state.ucEmail,
+      ucId: this.state.ucId,
+      onUcName: (e)=> this.setState({ ucName:e.target.value }),
+      onUcEmail: (e)=> this.setState({ ucEmail:e.target.value }),
+      onUcId: (e)=> this.setState({ ucId:e.target.value }),
+      ucSubmit: ()=> this.ucSubmit(),
+      ucReset: ()=> this.setState({ ucName:'', ucEmail:'', ucId:'', ucErr:'', ucSent:false }),
+      ucInputStyle: 'width:100%;font-family:Barlow;font-size:15px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 15px;outline:none',
+      ucFeatures: ['Neograničeno ponavljanje','Dostupno 24/7','Uči svojim tempom'],
+      lessons: [
+        { n:'01', t:'Osnove bezbednosti saobraćaja' },
+        { n:'02', t:'Vozač' },
+        { n:'03', t:'Put' },
+        { n:'04', t:'Vozilo i tehnički uslovi' },
+        { n:'05', t:'Pravila saobraćaja' },
+        { n:'06', t:'Saobraćajna signalizacija' },
+        { n:'07', t:'Prevoz lica i tereta' },
+        { n:'08', t:'Vozačke dozvole' },
+        { n:'09', t:'Dužnosti u slučaju nezgode' },
+        { n:'10', t:'Posebne mere i ovlašćenja' },
+      ],
+      kondBenefits: ['Oslobađanje od straha','Više samopouzdanja','Vožnja u realnim uslovima','Parkiranje i manevri','Termini po dogovoru','Iskusni instruktori'],
+      goA: () => this.setTab(0),
+      goB: () => this.setTab(1),
+      goC: () => this.setTab(2),
+      steps: [
+        { n:1, title:'Upis', text:'Prijavi se online ili u našoj kancelariji i izaberi kategoriju.' },
+        { n:2, title:'Teorija', text:'Predavanja uživo ili online' },
+        { n:3, title:'Vožnja', text:'Praktična obuka sa izborom instruktora, vozila i termina.' },
+        { n:4, title:'Ispit', text:'Izlaziš spreman i siguran na teorijski i praktični ispit.' },
+      ],
+      partners: [
+        'https://autoskoladule.rs/wp-content/uploads/2020/12/udrzenje-bajkera-krusevac-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/motocros-club-globare-logo-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/lion-taxi-logo-1-150x150.png',
+        'https://autoskoladule.rs/wp-content/uploads/2021/01/moto-centar-gajic-150x150.png',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
